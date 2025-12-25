@@ -749,19 +749,19 @@
 
             images = images.map(img => img.replace(/\\/g, '/'));
 
-            let mainImageSrc = images.length > 0 ? `http://localhost:5000/${images[0]}` : 'https://placehold.co/400?text=No+Image';
+            let mainImageSrc = images.length > 0 ? `/${images[0]}` : 'https://placehold.co/400?text=No+Image';
 
             let thumbnailsHTML = '';
             if (images.length > 1) {
                 images.forEach((img, index) => {
-                    let src = `http://localhost:5000/${img}`;
+                    let src = `/${img}`; 
                     thumbnailsHTML += `<img src="${src}" class="thumb-img ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${src}', this)">`;
                 });
             }
 
             let videoHTML = '';
             if (prod.video) {
-                let videoSrc = `http://localhost:5000/${prod.video.replace(/\\/g, '/')}`;
+                let videoSrc = `/${prod.video.replace(/\\/g, '/')}`;
                 videoHTML = `
                 <div style="margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
                     <h3 style="font-size:18px; color:#333; margin-bottom:15px; font-weight:600;">Product Video</h3>

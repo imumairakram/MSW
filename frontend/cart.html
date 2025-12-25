@@ -842,7 +842,7 @@
                     totalShipping += shipping;
 
                     let imageSrc = (product.images && product.images.length > 0) ? product.images[0] : product.image;
-                    let cleanImage = imageSrc ? `http://localhost:5000/${imageSrc.replace(/\\/g, '/')}` : 'https://placehold.co/80';
+                    let cleanImage = imageSrc ? `/${imageSrc.replace(/\\/g, '/')}` : 'https://placehold.co/80';
 
                     htmlItems += `
                     <tr>

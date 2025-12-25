@@ -1157,7 +1157,7 @@
 
         async function sendUserOTP() {
             const email = document.getElementById('uRecoverEmail').value;
-            const res = await fetch('http://localhost:5000/api/user/forgot-password', {
+            const res = await fetch('/api/user/forgot-password', {
                 method: 'POST', headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email })
             });
@@ -1192,7 +1192,7 @@
             if (!email) return showAlert('error', 'Missing Input', 'Please enter your email.');
 
             try {
-                const res = await fetch('http://localhost:5000/api/user/forgot-password', {
+                const res = await fetch('/api/user/forgot-password', {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email })
                 });
@@ -1213,7 +1213,7 @@
             const newPassword = document.getElementById('uNewPass').value;
 
             try {
-                const res = await fetch('http://localhost:5000/api/user/reset-password', {
+                const res = await fetch('/api/user/reset-password', {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, otp, newPassword })
                 });
@@ -1293,7 +1293,7 @@
             btn.disabled = true;
 
             try {
-                const res = await fetch('http://localhost:5000/api/user/forgot-password', {
+                const res = await fetch('/api/user/reset-password', {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email })
                 });
@@ -1325,7 +1325,7 @@
             btn.disabled = true;
 
             try {
-                const res = await fetch('http://localhost:5000/api/user/reset-password', {
+                const res = await fetch('/api/user/reset-password', {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, otp, newPassword })
                 });

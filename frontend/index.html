@@ -930,7 +930,7 @@
                     let imageSrc = (prod.images && prod.images.length > 0) ? prod.images[0] : prod.image;
                     let cleanImage = imageSrc ? imageSrc.replace(/\\/g, '/') : '';
 
-                    let img = cleanImage ? `http://localhost:5000/${cleanImage}` : 'https://placehold.co/300x300?text=No+Image';
+                    let img = cleanImage ? `/${cleanImage}` : 'https://placehold.co/300x300?text=No+Image';
 
                     let priceHTML = prod.discount
                         ? `<span style="text-decoration:line-through; color:#999;">PKR ${prod.price}</span> <span style="color:#2A74ED;">PKR ${Math.round(prod.price - (prod.price * prod.discount / 100))}</span>`

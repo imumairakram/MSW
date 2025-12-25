@@ -758,7 +758,7 @@
             products.forEach(prod => {
                 let imageSrc = (prod.images && prod.images.length > 0) ? prod.images[0] : prod.image;
                 let cleanImage = imageSrc ? imageSrc.replace(/\\/g, '/') : '';
-                let img = cleanImage ? `http://localhost:5000/${cleanImage}` : 'https://placehold.co/300x300?text=No+Image';
+                let img = cleanImage ? `/${cleanImage}` : 'https://placehold.co/300x300?text=No+Image';
 
                 let finalPrice = prod.price;
                 let priceHTML = '';
