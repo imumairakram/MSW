@@ -265,8 +265,12 @@
             transform: scale(1.1);
         }
 
-        .bottom-nav-bar {
+
+
+        /* --- FIXED MOBILE BOTTOM NAV --- */
+        .mobile-bottom-nav {
             display: none;
+            /* Desktop par hidden */
             position: fixed;
             bottom: 0;
             left: 0;
@@ -283,21 +287,31 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-decoration: none;
             color: rgba(255, 255, 255, 0.7);
             font-size: 10px;
             font-weight: 500;
             position: relative;
+            width: 20%;
+            /* Har button barabar jagah lega */
         }
 
         .nav-item i {
-            font-size: 20px;
+            font-size: 18px;
             margin-bottom: 4px;
         }
 
         .nav-item.active {
             color: white;
             font-weight: 600;
+        }
+
+        /* Mobile par Show karne ke liye */
+        @media (max-width: 768px) {
+            .mobile-bottom-nav {
+                display: flex;
+            }
         }
 
         .mobile-cart-badge {
@@ -748,27 +762,27 @@
     </div>
 
     <div class="mobile-bottom-nav">
-        <a href="index.html" class="mobile-nav-item active">
+        <a href="index.html" class="nav-item">
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
 
-        <a href="shop.html" class="mobile-nav-item">
+        <a href="shop.html" class="nav-item">
             <i class="fas fa-store"></i>
             <span>Shop</span>
         </a>
 
-        <a href="cart.html" class="mobile-nav-item">
+        <a href="cart.html" class="nav-item active">
             <i class="fas fa-shopping-cart"></i>
-            <span>Cart</span>
+            <span>Cart</span>            
         </a>
 
-        <a href="user-profile.html" class="mobile-nav-item" id="bottomNavAccount">
+        <a href="user-profile.html" class="nav-item">
             <i class="fas fa-user"></i>
             <span>Account</span>
         </a>
 
-        <a href="javascript:void(0);" class="mobile-nav-item" onclick="toggleMenu()">
+        <a href="javascript:void(0);" class="nav-item" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
             <span>Menu</span>
         </a>
