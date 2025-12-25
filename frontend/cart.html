@@ -607,77 +607,83 @@
                 opacity: 1;
             }
         }
-        /* --- FIXED & COMPACT MODERN SELECTOR --- */
-.qty-selector {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #f3f4f6; /* Gray Background */
-    border-radius: 50px;
-    padding: 3px; /* Thora padding taake buttons chipke nahi */
-    width: auto;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
 
-.qty-btn {
-    width: 28px; /* Button ka size fix */
-    height: 28px;
-    min-width: 28px; /* Button ko pichakne se rokay ga */
-    border-radius: 50%;
-    border: none;
-    background: #ffffff;
-    color: #333;
-    font-size: 14px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    transition: all 0.2s;
-    margin: 0; /* Button ke bahar koi gap nahi */
-}
+        .qty-selector {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #f3f4f6;
+            border-radius: 50px;
+            padding: 3px;
+            width: auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
 
-.qty-btn:hover {
-    background-color: #2A74ED;
-    color: white;
-}
+        .qty-btn {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            border-radius: 50%;
+            border: none;
+            background: #ffffff;
+            color: #333;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+            margin: 0;
+        }
 
-.qty-btn svg {
-    width: 10px;
-    height: 10px;
-    stroke-width: 3;
-}
+        .qty-btn:hover {
+            background-color: #2A74ED;
+            color: white;
+        }
 
-/* --- SAB SE ZAROORI HISSA (INPUT FIX) --- */
-.qty-display {
-    width: 40px !important;
-    min-width: 40px !important;
-    max-width: 40px !important;
-    height: 28px !important; /* Button ki height ke barabar */
-    background: transparent !important;
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
-    
-    /* Text alignment fix */
-    text-align: center !important;
-    padding: 0 !important; /* Text ko center mein laye ga */
-    margin: 0 !important;
-    
-    font-size: 14px !important;
-    font-weight: 700 !important;
-    color: #333 !important;
-    pointer-events: none;
-    
-    /* Chrome/Safari ke spinners hatane ke liye */
-    -moz-appearance: textfield;
-}
+        .qty-btn svg {
+            width: 10px;
+            height: 10px;
+            stroke-width: 3;
+        }
 
-.qty-display::-webkit-outer-spin-button,
-.qty-display::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
+        .qty-display {
+            width: 40px !important;
+            min-width: 40px !important;
+            max-width: 40px !important;
+            height: 28px !important;
+            background: transparent !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            text-align: center !important;
+            padding: 0 !important;
+            margin: 0 !important;
+
+            font-size: 14px !important;
+            font-weight: 700 !important;
+            color: #333 !important;
+            pointer-events: none;
+            -moz-appearance: textfield;
+        }
+
+        .qty-display::-webkit-outer-spin-button,
+        .qty-display::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .mobile-nav-item {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 10px;
+            font-weight: 500;
+            width: 20%;
+        }
     </style>
 </head>
 
@@ -741,24 +747,28 @@
 
     </div>
 
-    <div class="bottom-nav-bar">
-        <a href="index.html" class="nav-item">
+    <div class="mobile-bottom-nav">
+        <a href="index.html" class="mobile-nav-item active">
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
-        <a href="shop.html" class="nav-item">
+
+        <a href="shop.html" class="mobile-nav-item">
             <i class="fas fa-store"></i>
             <span>Shop</span>
         </a>
-        <a href="cart.html" class="nav-item active"> <i class="fas fa-shopping-cart"></i>
+
+        <a href="cart.html" class="mobile-nav-item">
+            <i class="fas fa-shopping-cart"></i>
             <span>Cart</span>
-            <div id="mobileBottomCartCount" class="mobile-cart-badge" style="display:none;">0</div>
         </a>
-        <a href="user-profile.html" class="nav-item">
+
+        <a href="user-profile.html" class="mobile-nav-item" id="bottomNavAccount">
             <i class="fas fa-user"></i>
             <span>Account</span>
         </a>
-        <a href="javascript:void(0)" onclick="toggleMenu()" class="bottom-nav-item">
+
+        <a href="javascript:void(0);" class="mobile-nav-item" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
             <span>Menu</span>
         </a>

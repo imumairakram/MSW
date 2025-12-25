@@ -261,15 +261,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-decoration: none;
             color: rgba(255, 255, 255, 0.7);
             font-size: 10px;
             font-weight: 500;
             position: relative;
+            width: 20%;
+            padding: 5px 0;
         }
 
         .nav-item i {
-            font-size: 20px;
+            font-size: 18px;
             margin-bottom: 4px;
         }
 
@@ -417,6 +420,17 @@
                 display: block;
             }
         }
+
+        .mobile-nav-item {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 10px;
+            font-weight: 500;
+            width: 20%;
+        }
     </style>
 </head>
 
@@ -493,31 +507,32 @@
             </div>
         </div>
     </div>
-
     <div class="mobile-bottom-nav">
-        <a href="index.html" class="nav-item">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="shop.html" class="nav-item">
-            <i class="fas fa-store"></i>
-            <span>Shop</span>
-        </a>
-        <a href="cart.html" class="nav-item">
-            <i class="fas fa-shopping-bag"></i>
-            <span>Cart</span>
-            <div id="mobileBottomCartCount" class="mobile-cart-badge" style="display:none;">0</div>
-        </a>
-        <a href="user-profile.html" class="nav-item">
-            <i class="fas fa-user"></i>
-            <span>Account</span>
-        </a>
-        <a href="javascript:void(0)" onclick="toggleMenu()" class="bottom-nav-item">
-            <i class="fas fa-bars"></i>
-            <span>Menu</span>
-        </a>
-    </div>
+    <a href="index.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </a>
+    
+    <a href="shop.html" class="nav-item">
+        <i class="fas fa-store"></i>
+        <span>Shop</span>
+    </a>
+    
+    <a href="cart.html" class="nav-item">
+        <i class="fas fa-shopping-bag"></i>
+        <span>Cart</span>
+    </a>
+    
+    <a href="user-profile.html" class="nav-item">
+        <i class="fas fa-user"></i>
+        <span>Account</span>
+    </a>
 
+    <a href="javascript:void(0);" class="nav-item" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+    </a>
+</div>
     <script>
         function toggleMenu() {
             const menu = document.getElementById('navMenu');
