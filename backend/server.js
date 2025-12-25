@@ -20,27 +20,23 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'mswenterprisespk@gmail.com',
-        pass: 'process.env.EMAIL_PASS'
+        pass: process.env.EMAIL_PASS
     }
 });
 
 const uploadDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 
-app.use(cors());
-// Naya Code:
-app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Ye same rahega agar uploads backend folder mein hain
-
-// Agar assets frontend folder mein hain to '../frontend/assets' karein
-app.use('/assets', express.static(path.join(__dirname, '../frontend/assets'), { maxAge: '30d' })); 
-
-// Frontend folder serve karne ke liye
+// app.use(cors());
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-// Index file serve karne ke liye
 app.get('/', (req, res) => { 
-    res.sendFile(path.join(__dirname, '../frontend', 'index.html')); 
+    res.sendFile(path.join(__dirname, '../frontend/index.html')); 
 });
+
+// Assets folder ke liye bhi path set karein (Zaroori hai)
+app.use('/assets', express.static(path.join(__dirname, '../frontend/assets')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Uploads backend mein hi rahega
 
 const dbURI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/msw_enterprises'; 
 mongoose.connect(dbURI)

@@ -607,6 +607,77 @@
                 opacity: 1;
             }
         }
+        /* --- FIXED & COMPACT MODERN SELECTOR --- */
+.qty-selector {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f4f6; /* Gray Background */
+    border-radius: 50px;
+    padding: 3px; /* Thora padding taake buttons chipke nahi */
+    width: auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.qty-btn {
+    width: 28px; /* Button ka size fix */
+    height: 28px;
+    min-width: 28px; /* Button ko pichakne se rokay ga */
+    border-radius: 50%;
+    border: none;
+    background: #ffffff;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: all 0.2s;
+    margin: 0; /* Button ke bahar koi gap nahi */
+}
+
+.qty-btn:hover {
+    background-color: #2A74ED;
+    color: white;
+}
+
+.qty-btn svg {
+    width: 10px;
+    height: 10px;
+    stroke-width: 3;
+}
+
+/* --- SAB SE ZAROORI HISSA (INPUT FIX) --- */
+.qty-display {
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    height: 28px !important; /* Button ki height ke barabar */
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    
+    /* Text alignment fix */
+    text-align: center !important;
+    padding: 0 !important; /* Text ko center mein laye ga */
+    margin: 0 !important;
+    
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #333 !important;
+    pointer-events: none;
+    
+    /* Chrome/Safari ke spinners hatane ke liye */
+    -moz-appearance: textfield;
+}
+
+.qty-display::-webkit-outer-spin-button,
+.qty-display::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
     </style>
 </head>
 
@@ -767,7 +838,13 @@
                         </td>
 
                         <td data-label="Quantity">
-                            <input type="number" class="qty-input" value="${item.quantity}" min="1" onchange="updateQty('${item.id}', this.value)">
+                            <div class="qty-selector">
+                                <button class="qty-btn" onclick="updateQty('${item.id}', ${item.quantity - 1})">−</button>
+        
+                                <input type="text" class="qty-display" value="${item.quantity}" readonly>
+        
+                                <button class="qty-btn" onclick="updateQty('${item.id}', ${item.quantity + 1})">+</button>
+                            </div>
                         </td>
 
                         <td data-label="Subtotal">
@@ -821,8 +898,8 @@
         async function updateQty(id, newQty) {
             const qty = parseInt(newQty);
 
+            // Ye check zaroori hai: Agar quantity 1 se kam ho to function rok do
             if (!qty || qty < 1) {
-                loadCartPage();
                 return;
             }
 
