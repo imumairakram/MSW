@@ -1293,7 +1293,7 @@
             btn.disabled = true;
 
             try {
-                const res = await fetch('/api/user/reset-password', {
+                const res = await fetch('/api/user/forgot-password', {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email })
                 });
