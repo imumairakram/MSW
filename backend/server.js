@@ -30,15 +30,15 @@ if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 // app.use(cors());
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-app.get('/', (req, res) => { 
-    res.sendFile(path.join(__dirname, '../frontend/index.html')); 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
 // Assets folder ke liye bhi path set karein (Zaroori hai)
 app.use('/assets', express.static(path.join(__dirname, '../frontend/assets')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Uploads backend mein hi rahega
 
-const dbURI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/msw_enterprises'; 
+const dbURI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/msw_enterprises';
 mongoose.connect(dbURI)
     .then(async () => {
         console.log("MongoDB Connected");
@@ -254,7 +254,10 @@ app.post('/api/user/forgot-password', async (req, res) => {
             subject: 'Reset Password', html: `<h3>OTP: ${otp}</h3>`
         });
         res.json({ success: true });
-    } catch (e) { res.status(500).json({ success: false }); }
+    } catch (e) {
+        console.error("Forgot Password Error:", e); // Render logs mein error print hoga
+        res.status(500).json({ success: false, message: e.message }); // Frontend ko error dikhega
+    }
 });
 
 app.post('/api/user/reset-password', async (req, res) => {
