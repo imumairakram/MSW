@@ -17,6 +17,9 @@ app.use(bodyParser.json({ limit: '500mb' }));
 app.use(bodyParser.urlencoded({ limit: '500mb', extended: true }));
 
 const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',  
+    port: 465,               
+    secure: true,
     service: 'gmail',
     auth: {
         user: 'mswenterprisespk@gmail.com',
