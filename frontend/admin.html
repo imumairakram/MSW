@@ -950,7 +950,7 @@
     </div>
 
     <script>
-        let allOrdersData = []; 
+        let allOrdersData = [];
         const API_URL = '/api';
         const token = localStorage.getItem('admin_token');
         let isEditing = false;
@@ -1210,45 +1210,64 @@
                 data.orders.forEach(o => {
                     let itemsHtml = o.cart_items.map((i, index) =>
                         `<div style="margin-bottom:4px;">
-            <b>${index + 1}.</b> ${i.title} <span style="color:#666; font-size:12px;">(x${i.quantity})</span>
-            </div>`
+                            <b>${index + 1}.</b> ${i.title} <span style="color:#666; font-size:12px;">(x${i.quantity})</span>
+                        </div>`
                     ).join('');
 
-                    let cancelNote = o.status === 'Cancelled' ?
-                        `<div style="margin-top: 8px; color: #dc2626; font-size: 11px; background: #fef2f2; padding: 4px; border-radius: 4px;"><i class="fas fa-exclamation-circle"></i> Customer has cancelled the order</div>` : '';
+                    // --- NEW LOGIC FOR CANCEL NOTE ---
+                    let cancelNote = '';
+                    if (o.status === 'Cancelled') {
+                        if (o.cancelledBy === 'customer') {
+                            // Customer ne cancel kiya (Red Alert)
+                            cancelNote = `<div style="margin-top: 8px; color: #dc2626; font-size: 11px; background: #fef2f2; padding: 4px; border-radius: 4px;">
+                                            <i class="fas fa-user-times"></i> Customer cancelled order
+                                          </div>`;
+                        } else if (o.cancelledBy === 'admin') {
+                            // Admin ne cancel kiya (Orange/Yellow Alert)
+                            cancelNote = `<div style="margin-top: 8px; color: #d97706; font-size: 11px; background: #fffbeb; padding: 4px; border-radius: 4px;">
+                                            <i class="fas fa-user-shield"></i> You (Admin) cancelled this
+                                          </div>`;
+                        } else {
+                            // Purane orders ke liye fallback
+                            cancelNote = `<div style="margin-top: 8px; color: #dc2626; font-size: 11px; background: #fef2f2; padding: 4px; border-radius: 4px;">
+                                            <i class="fas fa-ban"></i> Order Cancelled
+                                          </div>`;
+                        }
+                    }
+                    // ---------------------------------
 
                     let options = statuses.map(s => `<option value="${s}" ${o.status === s ? 'selected' : ''}>${s}</option>`).join('');
                     let addressStr = `${o.customer_details.address}, ${o.customer_details.city}`;
 
                     tb.innerHTML += `
-        <tr>
-            <td style="color:var(--primary); font-weight:bold;">${o.order_id || 'N/A'}</td>
-            <td>
-                <strong>${o.customer_details.name}</strong><br>
-                <span style="font-size:12px; color:#555;">${addressStr}</span><br>
-                <span style="font-size:11px; color:#888;">${o.customer_details.contact}</span>
-            </td>
-            <td>${itemsHtml} ${cancelNote}</td>
-            <td style="font-weight:bold;">PKR ${o.total_bill || 0}</td>
-            
-            <td>
-                <select id="status-${o._id}" style="padding:8px; border-radius:8px; border:1px solid #cbd5e1; font-size:13px; background:#f8fafc; outline:none; cursor:pointer;">
-                    ${options}
-                </select>
-            </td>
-            
-            <td>
-                <div class="action-buttons-container">
-                    <button class="btn-modern btn-save" onclick="updateStatus('${o._id}')">
-                        <i class="fas fa-save"></i> Save
-                    </button>
-                    
-                    <button class="btn-modern btn-awb" onclick="printAWB('${o._id}')">
-                        <i class="fas fa-print"></i> AWB
-                    </button>
-                </div>
-            </td>
-        </tr>`;
+                    <tr>
+                        <td style="color:var(--primary); font-weight:bold;">${o.order_id || 'N/A'}</td>
+                        <td>
+                            <strong>${o.customer_details.name}</strong><br>
+                            <span style="font-size:12px; color:#555;">${addressStr}</span><br>
+                            <span style="font-size:11px; color:#888;">${o.customer_details.contact}</span>
+                        </td>
+                        <td>${itemsHtml} ${cancelNote}</td>
+                        <td style="font-weight:bold;">PKR ${o.total_bill || 0}</td>
+                        
+                        <td>
+                            <select id="status-${o._id}" style="padding:8px; border-radius:8px; border:1px solid #cbd5e1; font-size:13px; background:#f8fafc; outline:none; cursor:pointer;">
+                                ${options}
+                            </select>
+                        </td>
+                        
+                        <td>
+                            <div class="action-buttons-container">
+                                <button class="btn-modern btn-save" onclick="updateStatus('${o._id}')">
+                                    <i class="fas fa-save"></i> Save
+                                </button>
+                                
+                                <button class="btn-modern btn-awb" onclick="printAWB('${o._id}')">
+                                    <i class="fas fa-print"></i> AWB
+                                </button>
+                            </div>
+                        </td>
+                    </tr>`;
                 });
             } catch (e) { console.error(e); }
         }

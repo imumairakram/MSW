@@ -83,9 +83,13 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model('Product', productSchema);
 
 const orderSchema = new mongoose.Schema({
-    customer_details: Object, cart_items: Array, total_bill: Number,
+    customer_details: Object, 
+    cart_items: Array, 
+    total_bill: Number,
     status: { type: String, default: 'Seller to Pack' },
-    order_id: String, user_id: String,
+    cancelledBy: { type: String, default: null },
+    order_id: String, 
+    user_id: String,
     created_at: { type: Date, default: Date.now }
 });
 const Order = mongoose.model('Order', orderSchema);
@@ -326,9 +330,16 @@ app.post('/api/order/cancel/:id', verifyToken, async (req, res) => {
     try {
         const order = await Order.findOne({ order_id: req.params.id, user_id: req.user.id });
         if (!order) return res.json({ success: false });
-        if (order.status !== 'Pending' && order.status !== 'Seller to Pack') return res.json({ success: false, message: "Too late to cancel" });
+        
+        if (order.status !== 'Pending' && order.status !== 'Seller to Pack') {
+            return res.json({ success: false, message: "Too late to cancel" });
+        }
+        
         order.status = 'Cancelled';
+        order.cancelledBy = 'customer'; 
+        
         await order.save();
+        
         if (order.cart_items) {
             for (const item of order.cart_items) {
                 if (item.id) await Product.findByIdAndUpdate(item.id, { $inc: { stock: item.quantity, sold: -item.quantity } });
@@ -375,10 +386,21 @@ app.get('/api/admin/orders', async (req, res) => {
 app.put('/api/admin/order/:id/status', async (req, res) => {
     try {
         const { status } = req.body;
-        let order = await Order.findOneAndUpdate({ order_id: req.params.id }, { status: status }, { new: true });
-        if (!order && mongoose.Types.ObjectId.isValid(req.params.id)) {
-            order = await Order.findByIdAndUpdate(req.params.id, { status: status }, { new: true });
+        
+        let updateData = { status: status };
+
+        if (status === 'Cancelled') {
+            updateData.cancelledBy = 'admin';
+        } else {
+            updateData.cancelledBy = null; 
         }
+
+        let order = await Order.findOneAndUpdate({ order_id: req.params.id }, updateData, { new: true });
+        
+        if (!order && mongoose.Types.ObjectId.isValid(req.params.id)) {
+            order = await Order.findByIdAndUpdate(req.params.id, updateData, { new: true });
+        }
+        
         if (!order) return res.status(404).json({ success: false });
         res.json({ success: true });
     } catch (e) { res.status(500).json({ success: false }); }
