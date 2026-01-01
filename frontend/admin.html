@@ -714,7 +714,7 @@
                 </div>
 
                 <div class="stats-grid">
-                    <div class="card stat-item">
+                    <div class="card stat-item" onclick="viewDetails('completed')" style="cursor: pointer;">
                         <div class="stat-icon icon-blue"><i class="fas fa-wallet"></i></div>
                         <div class="stat-text">
                             <h3>PKR <span id="dashEarnings">0</span></h3>
@@ -722,7 +722,7 @@
                         </div>
                     </div>
 
-                    <div class="card stat-item">
+                    <div class="card stat-item" onclick="viewDetails('all')" style="cursor: pointer;">
                         <div class="stat-icon icon-orange"><i class="fas fa-shopping-bag"></i></div>
                         <div class="stat-text">
                             <h3 id="dashOrders">0</h3>
@@ -730,7 +730,7 @@
                         </div>
                     </div>
 
-                    <div class="card stat-item">
+                    <div class="card stat-item" onclick="viewDetails('cancelled')" style="cursor: pointer;">
                         <div class="stat-icon" style="background:#fee2e2; color:#991b1b;">
                             <i class="fas fa-ban"></i>
                         </div>
@@ -740,14 +740,15 @@
                         </div>
                     </div>
 
-                    <div class="card stat-item">
+                    <div class="card stat-item" onclick="viewDetails('low-stock')" style="cursor: pointer;">
                         <div class="stat-icon icon-red"><i class="fas fa-exclamation-triangle"></i></div>
                         <div class="stat-text">
                             <h3 id="dashLowStock">0</h3>
                             <p>Low Stock Alerts</p>
                         </div>
                     </div>
-                    <div class="card stat-item">
+
+                    <div class="card stat-item" onclick="viewDetails('pending')" style="cursor: pointer;">
                         <div class="stat-icon" style="background:#fff3cd; color:#856404;">
                             <i class="fas fa-clock"></i>
                         </div>
@@ -757,7 +758,7 @@
                         </div>
                     </div>
 
-                    <div class="card stat-item">
+                    <div class="card stat-item" onclick="viewDetails('completed')" style="cursor: pointer;">
                         <div class="stat-icon" style="background:#dcfce7; color:#166534;">
                             <i class="fas fa-check-circle"></i>
                         </div>
@@ -902,7 +903,6 @@
                     </form>
                 </div>
             </div>
-
             <div id="view-settings" class="content-section">
                 <div class="header-bar">
                     <h1 class="page-title">Admin Settings</h1>
@@ -924,7 +924,28 @@
                     </form>
                 </div>
             </div>
+            <div id="view-details" class="content-section">
 
+                <div class="table-wrapper">
+
+                    <div class="header-bar"
+                        style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+                        <h1 class="page-title" id="detailsTitle" style="margin: 0;">Details</h1>
+
+                        <button class="btn-modern btn-save" onclick="switchTab('dashboard')"
+                            style="width: auto; margin: 0; display: flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                    </div>
+
+                    <table id="detailsTable">
+                        <thead>
+                        </thead>
+                        <tbody id="detailsTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1013,7 +1034,7 @@
             if (id === 'orders') loadOrders();
             if (id === 'add-product') { if (!isEditing) resetForm(); }
         }
-
+        let lowStockCache = [];
         async function loadStats() {
             try {
                 const res = await fetch(`${API_URL}/admin/stats`);
@@ -1026,21 +1047,19 @@
                     document.getElementById('dashPending').innerText = data.pending_orders;
                     document.getElementById('dashCompleted').innerText = data.completed_orders;
 
-                    const allProductsRes = await fetch(`${API_URL}/products`);
-                    const allProducts = await allProductsRes.json();
-                    const criticalStock = allProducts.filter(p => p.stock <= 7);
-                    document.getElementById('dashLowStock').innerText = criticalStock.length;
+                    lowStockCache = data.low_stock_items || [];
+                    document.getElementById('dashLowStock').innerText = data.low_stock_count;
 
                     const tb = document.getElementById('lowStockTable');
-                    if (criticalStock.length > 0) {
+                    if (lowStockCache.length > 0) {
                         tb.innerHTML = '';
-                        criticalStock.forEach(p => {
+                        lowStockCache.forEach(p => {
                             tb.innerHTML += `<tr>
-                        <td>${p.title}</td>
-                        <td>PKR ${p.price}</td>
-                        <td><span class="status-pill pill-red">${p.stock} Left</span></td>
-                        <td><span style="color:red; font-weight:600;">Restock Now!</span></td>
-                    </tr>`;
+                <td>${p.title}</td>
+                <td>PKR ${p.price}</td>
+                <td><span class="status-pill pill-red">${p.stock} Left</span></td>
+                <td><span style="color:red; font-weight:600;">Restock Now!</span></td>
+            </tr>`;
                         });
                     } else {
                         tb.innerHTML = '<tr><td colspan="4" align="center">Stock levels are healthy (>7)!</td></tr>';
@@ -1048,6 +1067,145 @@
                 }
             } catch (err) { console.error(err); }
         }
+
+        async function viewDetails(type) {
+            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+            document.getElementById('view-details').classList.add('active');
+
+            const titleEl = document.getElementById('detailsTitle');
+            const tableHead = document.querySelector('#detailsTable thead');
+            const tableBody = document.getElementById('detailsTableBody');
+
+            tableBody.innerHTML = '<tr><td colspan="6" align="center">Loading...</td></tr>';
+
+            if (type === 'low-stock') {
+                titleEl.innerText = '⚠️ Low Stock Products';
+                tableHead.innerHTML = `
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Stock Left</th>
+                <th style="text-align:center;">Action</th>
+            </tr>`;
+
+                if (lowStockCache.length === 0) {
+                    tableBody.innerHTML = '<tr><td colspan="5" align="center">No low stock items found.</td></tr>';
+                    return;
+                }
+
+                let html = '';
+                // admin.html mein viewDetails function ke andar low stock wala loop:
+
+                lowStockCache.forEach(p => {
+                    let img = (p.images && p.images.length > 0) ? `/${p.images[0].replace(/\\/g, '/')}` : 'https://placehold.co/50';
+                    html += `
+    <tr>
+    <td><img src="${img}" class="product-thumb"></td>
+    <td><strong>${p.title}</strong></td>
+    <td>PKR ${p.price}</td>
+    <td><span class="status-pill pill-red" style="font-size:14px;">${p.stock} Units</span></td>
+    <td style="text-align:center;">
+        <button class="btn-modern btn-save" onclick="switchTab('products')" 
+            style="width:auto; margin:0 auto; padding: 6px 12px; font-size: 12px;">
+            <i class="fas fa-tasks"></i> Manage
+        </button>
+    </td>
+    </tr>`;
+                });
+                tableBody.innerHTML = html;
+                return;
+            }
+
+            let filterStatus = '';
+            if (type === 'pending') { titleEl.innerText = 'Pending Orders'; filterStatus = 'Pending'; }
+            else if (type === 'cancelled') { titleEl.innerText = 'Cancelled Orders'; filterStatus = 'Cancelled'; }
+            else if (type === 'completed') { titleEl.innerText = 'Completed Orders'; filterStatus = 'Delivered'; }
+            else { titleEl.innerText = 'All Orders'; filterStatus = 'All'; }
+
+            tableHead.innerHTML = `
+        <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Items</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th style="text-align:center;">Action</th>
+        </tr>`;
+
+            if (!allOrdersData || allOrdersData.length === 0) {
+                await loadOrders();
+            }
+
+            let filteredOrders = allOrdersData;
+            if (filterStatus !== 'All') {
+                filteredOrders = allOrdersData.filter(o => o.status === filterStatus);
+            }
+
+            if (filteredOrders.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="6" align="center">No orders found in this category.</td></tr>';
+                return;
+            }
+
+            let html = '';
+            const statuses = ["Pending", "Packed", "Shipped", "Delivered", "Cancelled"];
+
+            filteredOrders.forEach(o => {
+                let itemsHtml = o.cart_items.map((i, index) =>
+                    `<div style="margin-bottom:4px;"><b>${index + 1}.</b> ${i.title} <span style="color:#666; font-size:12px;">(x${i.quantity})</span></div>`
+                ).join('');
+
+                let cancelNote = '';
+                if (o.status === 'Cancelled') {
+                    if (o.cancelledBy === 'customer') cancelNote = `<div style="margin-top:5px; color:red; font-size:11px;">Customer cancelled</div>`;
+                    else if (o.cancelledBy === 'admin') cancelNote = `<div style="margin-top:5px; color:orange; font-size:11px;">Admin cancelled</div>`;
+                }
+
+                let options = statuses.map(s => `<option value="${s}" ${o.status === s ? 'selected' : ''}>${s}</option>`).join('');
+                let addressStr = `${o.customer_details.address}, ${o.customer_details.city}`;
+
+                html += `
+        <tr>
+            <td style="color:var(--primary); font-weight:bold;">${o.order_id || 'N/A'}</td>
+            <td>
+                <strong>${o.customer_details.name}</strong><br>
+                <span style="font-size:12px; color:#555;">${addressStr}</span>
+            </td>
+            <td>${itemsHtml} ${cancelNote}</td>
+            <td style="font-weight:bold;">PKR ${o.total_bill || 0}</td>
+            <td>
+                <select id="status-detail-${o._id}" style="padding:5px; border-radius:5px; border:1px solid #ccc;">${options}</select>
+            </td>
+            <td>
+                <div class="action-buttons-container">
+                    <button class="btn-modern btn-save" onclick="updateStatus('${o._id}', 'status-detail-${o._id}')">Save</button>
+                </div>
+            </td>
+        </tr>`;
+            });
+            tableBody.innerHTML = html;
+        }
+
+        async function updateStatus(orderId, selectId = null) {
+            const selectBox = document.getElementById(selectId || `status-${orderId}`);
+            const newStatus = selectBox.value;
+
+            try {
+                const res = await fetch(`${API_URL}/admin/order/${orderId}/status`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json', 'auth-token': token },
+                    body: JSON.stringify({ status: newStatus })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showAlert('success', 'Updated!', 'Status updated.');
+                    loadStats();
+                } else {
+                    showAlert('error', 'Error', 'Failed to update.');
+                }
+            } catch (e) { showAlert('error', 'Error', 'Server Error'); }
+        }
+
         async function loadProducts() {
             try {
                 const res = await fetch(`${API_URL}/products`);
