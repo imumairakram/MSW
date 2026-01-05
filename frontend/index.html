@@ -483,9 +483,105 @@
             line-height: 1;
         }
 
+        .blur-active {
+            filter: blur(5px);
+            pointer-events: none;
+            transition: filter 0.3s ease;
+            user-select: none;
+        }
+
+        #mainPageContent {
+            transition: filter 0.3s ease;
+            width: 100%;
+        }
+
         @media (max-width: 768px) {
             body {
                 padding-bottom: 70px;
+            }
+
+            .nav-menu {
+                position: fixed !important;
+                top: 0;
+                left: -320px;
+                width: 300px;
+                height: 100vh;
+                background: #ffffff !important;
+                flex-direction: column;
+                padding-top: 20px;
+                box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
+                z-index: 3000;
+                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                display: flex;
+                align-items: flex-start;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            /* Menu Links Fix */
+            .nav-menu ul {
+                flex-direction: column;
+                width: 100%;
+                padding: 0;
+                margin-top: 10px;
+                display: flex;
+            }
+
+            .nav-menu ul li {
+                width: 100%;
+                border-bottom: 1px solid #f5f5f5;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 16px 30px;
+            }
+
+            /* 2. Fixed Close Button */
+            .menu-close {
+                display: none;
+                position: fixed;
+                top: 25px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                background: #fff;
+                border-radius: 50%;
+                font-size: 20px;
+                color: #333;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                z-index: 3005;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+                transition: transform 0.2s;
+            }
+
+            .menu-close:active {
+                transform: scale(0.9);
+            }
+
+            .nav-menu.active .menu-close {
+                display: flex;
+            }
+
+            /* 3. Mobile Bottom Nav Active Color */
+            .mobile-nav-item.active {
+                color: #ffffff !important;
+                font-weight: 600;
+                opacity: 1 !important;
+            }
+
+            /* 4. Logo in Menu */
+            .mobile-menu-logo {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                border-bottom: 2px solid #f5f5f5;
+                padding-bottom: 20px;
+                margin-bottom: 10px;
             }
 
             .custom-header-wrapper {
@@ -522,47 +618,7 @@
                 gap: 15px;
             }
 
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                left: -320px;
-                width: 300px;
-                height: 100vh;
-                background: #fff;
-                flex-direction: column;
-                padding-top: 20px;
-                box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
-                z-index: 2000;
-                transition: left 0.3s ease;
-                display: flex;
-                align-items: flex-start;
-            }
 
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .nav-menu ul {
-                flex-direction: column;
-                width: 100%;
-                padding: 0 20px;
-                text-align: left;
-            }
-
-            .nav-menu ul li {
-                border-bottom: 1px solid #f5f5f5;
-                width: 100%;
-                padding: 10px 0;
-            }
-
-            .mobile-menu-logo {
-                display: block;
-                text-align: center;
-                width: 100%;
-                margin-bottom: 20px;
-                border-bottom: 2px solid #f5f5f5;
-                padding-bottom: 10px;
-            }
 
             .mobile-menu-logo img {
                 width: 120px;
@@ -590,9 +646,9 @@
                 background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 40%, rgba(255, 255, 255, 0) 100%), url('https://xstore.8theme.com/elementor/demos/minimal-electronics/wp-content/uploads/sites/71/2022/02/Image-4.jpeg') !important;
                 background-size: cover;
                 background-position: center bottom !important;
-                height: 600px !important;
+                height: 775px !important;
                 align-items: flex-start !important;
-                padding: 80px 20px 0 20px !important;
+                padding: 175px 20px 0 20px !important;
                 text-align: center;
             }
 
@@ -690,10 +746,6 @@
                 font-weight: 500;
             }
 
-            .mobile-nav-item.active {
-                color: white;
-            }
-
             .mobile-nav-item i {
                 font-size: 18px;
                 margin-bottom: 4px;
@@ -731,6 +783,33 @@
                     <li><a href="contactus.html">Contact Us</a></li>
                 </ul>
             </nav>
+            <div class="mobile-bottom-nav">
+                <a href="index.html" class="mobile-nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="shop.html" class="mobile-nav-item">
+                    <i class="fas fa-store"></i>
+                    <span>Shop</span>
+                </a>
+
+                <a href="cart.html" class="mobile-nav-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                </a>
+
+                <a href="user-profile.html" class="mobile-nav-item" id="bottomNavAccount">
+                    <i class="fas fa-user"></i>
+                    <span>Account</span>
+                </a>
+
+                <a href="javascript:void(0);" class="mobile-nav-item" id="mobileMenuBtn" onclick="toggleMenu()">
+                    <i class="fas fa-bars" id="mobileMenuIcon"></i>
+                    <span id="mobileMenuText">Menu</span>
+                </a>
+            </div>
+
             <div class="header-actions">
                 <a href="cart.html" class="header-icon-btn"><i class="fas fa-shopping-bag"></i><span
                         class="cart-count-badge" id="headerCartCount">0</span></a>
@@ -830,45 +909,42 @@
         </div>
     </footer>
 
-    <div class="mobile-bottom-nav">
-        <a href="index.html" class="mobile-nav-item active">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-
-        <a href="shop.html" class="mobile-nav-item">
-            <i class="fas fa-store"></i>
-            <span>Shop</span>
-        </a>
-
-        <a href="cart.html" class="mobile-nav-item">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Cart</span>
-        </a>
-
-        <a href="user-profile.html" class="mobile-nav-item" id="bottomNavAccount">
-            <i class="fas fa-user"></i>
-            <span>Account</span>
-        </a>
-
-        <a href="javascript:void(0);" class="mobile-nav-item" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-            <span>Menu</span>
-        </a>
-    </div>
-
     <script>
-        const API_URL = '/api';
+        const API_URL = 'http://localhost:5000/api';
 
+        // Replace old toggleMenu with this:
         function toggleMenu() {
             const menu = document.getElementById('navMenu');
             const overlay = document.querySelector('.menu-overlay');
+
+            // New Elements needed for effects
+            const mainContent = document.getElementById('mainPageContent');
+            const menuIcon = document.getElementById('mobileMenuIcon');
+            const menuText = document.getElementById('mobileMenuText');
+            const menuBtn = document.getElementById('mobileMenuBtn'); // The button itself
+
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+
             if (menu.classList.contains('active')) {
-                menu.classList.remove('active');
-                overlay.style.display = 'none';
+                // Menu Khul Gya
+                if (mainContent) mainContent.classList.add('blur-active'); // Blur ON
+                if (menuIcon) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times'); // Icon -> Cross
+                }
+                if (menuText) menuText.innerText = "Close"; // Text -> Close
+                if (menuBtn) menuBtn.classList.add('active'); // Color -> White
+
             } else {
-                menu.classList.add('active');
-                overlay.style.display = 'block';
+                // Menu Band Ho Gya
+                if (mainContent) mainContent.classList.remove('blur-active'); // Blur OFF
+                if (menuIcon) {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars'); // Icon -> Bars
+                }
+                if (menuText) menuText.innerText = "Menu"; // Text -> Menu
+                if (menuBtn) menuBtn.classList.remove('active'); // Color -> Gray
             }
         }
 
@@ -930,7 +1006,7 @@
                     let imageSrc = (prod.images && prod.images.length > 0) ? prod.images[0] : prod.image;
                     let cleanImage = imageSrc ? imageSrc.replace(/\\/g, '/') : '';
 
-                    let img = cleanImage ? `/${cleanImage}` : 'https://placehold.co/300x300?text=No+Image';
+                    let img = cleanImage ? `http://localhost:5000/${cleanImage}` : 'https://placehold.co/300x300?text=No+Image';
 
                     let priceHTML = prod.discount
                         ? `<span style="text-decoration:line-through; color:#999;">PKR ${prod.price}</span> <span style="color:#2A74ED;">PKR ${Math.round(prod.price - (prod.price * prod.discount / 100))}</span>`
