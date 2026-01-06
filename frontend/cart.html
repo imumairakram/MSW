@@ -111,7 +111,7 @@
             padding: 16px 30px;
             text-transform: uppercase;
         }
-        
+
         .nav-menu ul li a:hover {
             background-color: #f9f9f9;
             color: var(--theme-blue);
@@ -125,7 +125,7 @@
         }
 
         .mobile-menu-logo {
-            display: none; 
+            display: none;
             text-align: center;
             width: 100%;
             margin-bottom: 20px;
@@ -140,7 +140,7 @@
 
         /* --- FIXED CLOSE BUTTON --- */
         .menu-close {
-            display: none; 
+            display: none;
             position: fixed;
             top: 25px;
             right: 20px;
@@ -341,10 +341,69 @@
             box-shadow: 0 4px 15px rgba(42, 116, 237, 0.2);
         }
 
+        /* --- UPDATED HEADER STYLES --- */
+
+        /* Right side icons container */
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
+            /* Icons ke beech ka gap */
+        }
+
+        /* Icons (Bag & User) style */
+        .action-icon {
+            font-size: 22px;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .action-icon:hover {
+            color: var(--theme-blue);
+        }
+
+        /* Desktop Menu (Default Hidden) */
+        .desktop-nav {
+            display: none;
+        }
+
+        /* --- LARGE SCREENS (Desktop/Laptop) --- */
+        @media (min-width: 992px) {
+
+            /* Mobile Menu Icon Hide */
+            .menu-toggle {
+                display: none;
+            }
+
+            /* Nav Container adjustment for centering */
+            .nav-container {
+                position: relative;
+            }
+
+            /* Centered Links */
+            .desktop-nav {
+                display: flex;
+                gap: 40px;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                /* Bilkul center karne ka tareeqa */
+            }
+
+            .desktop-nav a {
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                font-size: 16px;
+                transition: color 0.3s;
+            }
+
+            .desktop-nav a:hover {
+                color: var(--theme-blue);
+            }
         }
 
         .btn-continue-shop {
@@ -634,6 +693,52 @@
                 opacity: 1;
             }
         }
+
+        /* --- DESKTOP MENU STYLES --- */
+        .desktop-menu {
+            display: none;
+            /* Mobile par hidden rahega */
+        }
+
+        /* Jab screen 768px se badi ho (Laptop/PC) */
+        @media (min-width: 769px) {
+
+            /* Hamburger icon chupayein */
+            .menu-toggle {
+                display: none !important;
+            }
+
+            /* Desktop menu dikhayein */
+            .desktop-menu {
+                display: block;
+                margin-left: 40px;
+                /* Logo se thoda gap */
+                flex-grow: 1;
+                /* Beech ki jagah le lega */
+            }
+
+            .desktop-menu ul {
+                display: flex;
+                list-style: none;
+                gap: 30px;
+                /* Links ke beech gap */
+                margin: 0;
+                padding: 0;
+            }
+
+            .desktop-menu ul li a {
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                font-size: 15px;
+                text-transform: uppercase;
+                transition: color 0.3s;
+            }
+
+            .desktop-menu ul li a:hover {
+                color: var(--theme-blue);
+            }
+        }
     </style>
 </head>
 
@@ -643,7 +748,7 @@
         <div class="menu-close" onclick="toggleMenu()">
             <i class="fas fa-times"></i>
         </div>
-        
+
         <div class="mobile-menu-logo">
             <img src="./assets/Logo@2x.png" alt="MSW">
         </div>
@@ -697,16 +802,23 @@
                     <a href="index.html"><img src="./assets/Logo@2x.png" alt="MSW"></a>
                 </div>
 
+                <nav class="desktop-nav">
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="aboutus.html">About Us</a>
+                    <a href="contactus.html">Contact Us</a>
+                </nav>
+
                 <div class="header-actions">
-                    <a href="shop.html" class="btn-continue-shop">
-                        <i class="fas fa-arrow-left"></i>
-                        <span>Shop</span>
+                    <a href="cart.html" class="action-icon">
+                        <i class="fas fa-shopping-bag"></i>
                     </a>
 
-                    <a href="myaccount.html" id="headerProfileLink" class="btn-profile-icon">
+                    <a href="user-profile.html" id="headerProfileLink" class="action-icon">
                         <i class="fas fa-user-circle"></i>
                     </a>
                 </div>
+
             </div>
         </header>
 
@@ -744,9 +856,9 @@
         function toggleMenu() {
             const menu = document.getElementById('navMenu');
             const overlay = document.querySelector('.menu-overlay');
-            const mainContent = document.getElementById('mainPageContent'); 
-            const menuIcon = document.getElementById('mobileMenuIcon');     
-            const menuText = document.getElementById('mobileMenuText');     
+            const mainContent = document.getElementById('mainPageContent');
+            const menuIcon = document.getElementById('mobileMenuIcon');
+            const menuText = document.getElementById('mobileMenuText');
             const menuBtn = document.getElementById('mobileMenuBtn'); // Select parent anchor
 
             // 1. Toggle Active Classes
