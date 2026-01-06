@@ -1748,7 +1748,7 @@
             }
 
             let options = statuses.map(s => `<option value="${s}" ${o.status === s ? 'selected' : ''}>${s}</option>`).join('');
-            let addressStr = `${o.customer_details.address}, ${o.customer_details.city}`;
+            let addressStr = `${o.customer_details.city}`;
 
             html += `
         <tr>
@@ -2002,7 +2002,7 @@
                 }
 
                 let options = statuses.map(s => `<option value="${s}" ${o.status === s ? 'selected' : ''}>${s}</option>`).join('');
-                let addressStr = `${o.customer_details.address}, ${o.customer_details.city}`;
+                let addressStr = `${o.customer_details.city}`;
 
                 // Note: Har <td> mein 'data-label' add kiya gaya hai
                 tb.innerHTML += `
@@ -2104,7 +2104,6 @@
             name: order.customer_details.name,
             contact: order.customer_details.contact,
             city: order.customer_details.city,
-            address: order.customer_details.address,
             amount: order.total_bill,
             date: formattedDate,
             email: order.customer_details.email || "N/A",

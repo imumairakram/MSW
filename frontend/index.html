@@ -495,67 +495,100 @@
             width: 100%;
         }
 
+        /* --- MOBILE MENU STYLES (Screenshot Match) --- */
         @media (max-width: 768px) {
-            body {
-                padding-bottom: 70px;
-            }
 
+            /* 1. Sidebar Container */
             .nav-menu {
-                position: fixed !important;
+                position: fixed;
                 top: 0;
                 left: -320px;
-                width: 300px;
+                /* Screen se bahar */
+                width: 280px;
+                /* Image jaisa width */
                 height: 100vh;
-                background: #ffffff !important;
-                flex-direction: column;
-                padding-top: 20px;
-                box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
+                background: #ffffff;
                 z-index: 3000;
-                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                transition: left 0.3s ease-in-out;
                 display: flex;
-                align-items: flex-start;
+                flex-direction: column;
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+                padding-top: 0;
+                /* Padding remove ki taake logo styling control ho */
             }
 
             .nav-menu.active {
                 left: 0;
+                /* Open hone par */
             }
 
-            /* Menu Links Fix */
+            /* 2. Sidebar Logo Area */
+            .mobile-menu-logo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 30px 20px;
+                border-bottom: 1px solid #f0f0f0;
+                margin-bottom: 0;
+            }
+
+            .mobile-menu-logo img {
+                width: 100px;
+                height: auto;
+            }
+
+            /* 3. Menu Links Styling (Uppercase & Clean) */
             .nav-menu ul {
+                display: flex;
                 flex-direction: column;
                 width: 100%;
+                margin: 0;
                 padding: 0;
-                margin-top: 10px;
-                display: flex;
+                list-style: none;
             }
 
             .nav-menu ul li {
                 width: 100%;
-                border-bottom: 1px solid #f5f5f5;
+                border-bottom: 1px solid #f9f9f9;
             }
 
-            .nav-menu a {
+            .nav-menu ul li a {
                 display: block;
-                padding: 16px 30px;
+                padding: 18px 25px;
+                color: #333;
+                font-size: 13px;
+                font-weight: 600;
+                text-transform: uppercase;
+                /* Image jaisa UPPERCASE text */
+                letter-spacing: 0.5px;
+                text-decoration: none;
+                transition: background 0.2s, color 0.2s;
             }
 
-            /* 2. Fixed Close Button */
+            .nav-menu ul li a:hover {
+                background: #fdfdfd;
+                color: var(--theme-blue);
+            }
+
+            /* 4. Floating Close Button (Top Right Circle) */
             .menu-close {
                 display: none;
+                /* Default hidden */
                 position: fixed;
                 top: 25px;
-                right: 20px;
-                width: 40px;
-                height: 40px;
-                background: #fff;
+                right: 25px;
+                /* Screen ke top-right corner par */
+                width: 45px;
+                height: 45px;
+                background: #ffffff;
                 border-radius: 50%;
-                font-size: 20px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
                 color: #333;
+                font-size: 20px;
+                z-index: 3005;
                 justify-content: center;
                 align-items: center;
                 cursor: pointer;
-                z-index: 3005;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
                 transition: transform 0.2s;
             }
 
@@ -563,9 +596,11 @@
                 transform: scale(0.9);
             }
 
+            /* Jab menu active ho, tab hi close button dikhayein */
             .nav-menu.active .menu-close {
                 display: flex;
             }
+
 
             /* 3. Mobile Bottom Nav Active Color */
             .mobile-nav-item.active {
@@ -622,20 +657,6 @@
 
             .mobile-menu-logo img {
                 width: 120px;
-            }
-
-            .menu-close {
-                display: flex;
-                position: absolute;
-                top: 15px;
-                right: 15px;
-                width: 35px;
-                height: 35px;
-                background: #f0f0f0;
-                border-radius: 50%;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
             }
 
             .menu-overlay.active {
@@ -715,13 +736,7 @@
                 -webkit-line-clamp: 2;
                 line-clamp: 2;
             }
-        }
 
-        .mobile-bottom-nav {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
             .mobile-bottom-nav {
                 display: flex;
                 position: fixed;
@@ -774,10 +789,16 @@
             <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
             <div class="logo"><a href="index.html"><img src="./assets/Logo@2x.png" alt="MSW"></a></div>
             <nav class="nav-menu" id="navMenu">
-                <div class="menu-close" onclick="toggleMenu()"><i class="fas fa-times"></i></div>
-                <div class="mobile-menu-logo"><img src="./assets/Logo@2x.png" alt="MSW"></div>
+                <div class="menu-close" onclick="toggleMenu()">
+                    <i class="fas fa-times"></i>
+                </div>
+
+                <div class="mobile-menu-logo">
+                    <img src="./assets/Logo@2x.png" alt="MSW">
+                </div>
+
                 <ul>
-                    <li><a href="index.html" style="color:var(--theme-blue);">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="shop.html">Shop</a></li>
                     <li><a href="aboutus.html">About Us</a></li>
                     <li><a href="contactus.html">Contact Us</a></li>
