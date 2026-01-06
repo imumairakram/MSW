@@ -470,7 +470,6 @@
             transform: translateY(-50%);
             cursor: pointer;
             color: #94a3b8;
-            /* Gray color */
             font-size: 16px;
             z-index: 10;
             transition: color 0.3s;
@@ -478,7 +477,6 @@
 
         .password-toggle:hover {
             color: #2A74ED;
-            /* Blue on hover */
         }
 
         .modal-icon {
@@ -598,9 +596,6 @@
             }
         }
 
-        /* --- Modern Button Styles --- */
-
-        /* Base style for both buttons */
         .btn-modern {
             display: inline-flex;
             align-items: center;
@@ -621,18 +616,15 @@
             margin-bottom: 5px;
         }
 
-        /* Hover effect: Lift up and glow */
         .btn-modern:hover {
             transform: translateY(-2px);
             filter: brightness(110%);
         }
 
-        /* Active/Click effect */
         .btn-modern:active {
             transform: translateY(0);
         }
 
-        /* 1. The Save/Update Button */
         .btn-save {
             background: linear-gradient(135deg, #2563eb, #3b82f6);
             box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
@@ -642,7 +634,6 @@
             box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
         }
 
-        /* 2. The AWB/Print Button */
         .btn-awb {
             background: linear-gradient(135deg, #475569, #64748b);
             box-shadow: 0 4px 10px rgba(71, 85, 105, 0.3);
@@ -652,7 +643,6 @@
             box-shadow: 0 6px 15px rgba(71, 85, 105, 0.4);
         }
 
-        /* Container to hold buttons nicely */
         .action-buttons-container {
             display: flex;
             flex-direction: column;
@@ -666,10 +656,8 @@
             }
         }
 
-        /* --- MOBILE VIEW WIDTH FIX --- */
         @media screen and (max-width: 768px) {
 
-            /* 1. Main Wrapper ki padding kam karen taake jagah zyada mile */
             .main-content {
                 padding: 10px !important;
             }
@@ -677,13 +665,10 @@
             .table-wrapper {
                 padding: 10px !important;
                 overflow-x: hidden !important;
-                /* Slide khatam */
             }
 
-            /* 2. CRITICAL FIX: Table ki 800px wali zid khatam */
             #detailsTable {
                 min-width: 0 !important;
-                /* Ye zaroori hai */
                 width: 100% !important;
                 display: block;
             }
@@ -693,7 +678,6 @@
                 width: 100%;
             }
 
-            /* 3. Row ko Card banayen (Width 100% rakhen) */
             #detailsTable tbody tr {
                 display: block;
                 width: 100%;
@@ -704,7 +688,6 @@
                 padding: 15px;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
                 box-sizing: border-box;
-                /* Padding width ke andar count hogi */
             }
 
             #detailsTable td {
@@ -744,18 +727,14 @@
             }
         }
 
-        /* --- PREMIUM CHARTS SECTION CSS (RESPONSIVE FIX) --- */
-        /* --- PREMIUM CHARTS SECTION CSS (FIXED SIZE) --- */
         .charts-grid {
             display: grid;
             grid-template-columns: 1fr 1.5fr;
-            /* 2 Columns Layout */
             gap: 20px;
             margin-bottom: 30px;
             width: 100%;
         }
 
-        /* Sirf bohot choti screen (Mobile/Tablet) par 1 column ho */
         @media (max-width: 992px) {
             .charts-grid {
                 grid-template-columns: 1fr;
@@ -766,14 +745,12 @@
             background: #fff;
             border-radius: 16px;
             padding: 20px;
-            /* Padding thori kam ki taake content ko jagah mile */
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
             border: 1px solid #f1f5f9;
             display: flex;
             flex-direction: column;
             min-width: 0;
             overflow: hidden;
-            /* Bahar nikalne se rokega */
         }
 
         .chart-header {
@@ -789,17 +766,13 @@
             color: #1e293b;
         }
 
-        /* --- Rings Container --- */
         .circles-container {
             display: flex;
             justify-content: space-around;
-            /* Space Between se behtar hai */
             align-items: center;
             padding: 5px 0;
             gap: 8px;
-            /* Gap kam kiya */
             flex-wrap: nowrap;
-            /* Force one line */
         }
 
         .circle-item {
@@ -810,11 +783,9 @@
             flex: 1;
         }
 
-        /* --- RESIZED RINGS (Choti ki hain taake fit ayen) --- */
         .circular-progress {
             position: relative;
             width: 95px;
-            /* Pehle 110px tha, ab 95px kiya */
             height: 95px;
             border-radius: 50%;
             display: flex;
@@ -822,12 +793,10 @@
             justify-content: center;
         }
 
-        /* Inner White Circle */
         .circular-progress::before {
             content: "";
             position: absolute;
             width: 65px;
-            /* Inner circle bhi adjust kiya */
             height: 65px;
             background: #fff;
             border-radius: 50%;
@@ -837,7 +806,6 @@
         .progress-value {
             position: relative;
             font-size: 16px;
-            /* Font size adjust kiya */
             font-weight: 800;
             color: #1e293b;
             z-index: 1;
@@ -849,10 +817,8 @@
             color: #64748b;
             text-align: center;
             white-space: nowrap;
-            /* Text ko tootne se rokega */
         }
 
-        /* Colors same rahenge */
         .ring-blue {
             --ring-color: #2563eb;
         }
@@ -865,13 +831,8 @@
             --ring-color: #f59e0b;
         }
 
-        /* =========================================
-   🚀 FINAL MOBILE FIX (ALL TABLES & VIEWS)
-   ========================================= */
-
         @media (max-width: 992px) {
 
-            /* 1. LAYOUT & SIDEBAR FIXES */
             aside,
             .sidebar-header {
                 display: none !important;
@@ -882,12 +843,9 @@
                 width: 100% !important;
                 padding: 15px !important;
                 padding-top: 80px !important;
-                /* Header space */
                 padding-bottom: 90px !important;
-                /* Bottom Nav space */
             }
 
-            /* Mobile Header Visible */
             .mobile-header {
                 display: flex !important;
                 position: fixed;
@@ -903,18 +861,15 @@
                 justify-content: space-between;
             }
 
-            /* 2. UNIVERSAL TABLE TO CARD CONVERSION (Sab tables ke liye) */
             .table-wrapper {
                 padding: 0 !important;
                 box-shadow: none !important;
                 background: transparent !important;
                 overflow-x: visible !important;
-                /* Scroll khatam */
             }
 
             table {
                 min-width: 0 !important;
-                /* Purani 800px width khatam */
                 width: 100% !important;
                 display: block;
                 background: transparent;
@@ -924,8 +879,6 @@
                 display: none;
             }
 
-            /* Header chupayen */
-
             tbody,
             tr,
             td {
@@ -933,7 +886,6 @@
                 width: 100%;
             }
 
-            /* Row Card Style */
             tr {
                 background: #fff;
                 margin-bottom: 15px;
@@ -944,7 +896,6 @@
                 position: relative;
             }
 
-            /* Cell Styles (Label Left - Value Right) */
             td {
                 display: flex;
                 justify-content: space-between;
@@ -960,10 +911,8 @@
                 border-bottom: none;
                 padding-top: 15px;
                 justify-content: center;
-                /* Action button center */
             }
 
-            /* Dynamic Labels (JS se aayenge) */
             td::before {
                 content: attr(data-label);
                 font-weight: 700;
@@ -973,10 +922,8 @@
                 text-align: left;
                 margin-right: 20px;
                 min-width: 100px;
-                /* Label ki jagah fix karen */
             }
 
-            /* 3. SPECIFIC ELEMENT FIXES */
             .product-thumb {
                 width: 60px;
                 height: 60px;
@@ -1001,7 +948,6 @@
                 max-width: 100% !important;
             }
 
-            /* 4. FORM FIXES (Add Product) */
             .form-grid {
                 display: flex !important;
                 flex-direction: column !important;
@@ -1012,10 +958,8 @@
             .form-group select,
             .form-group textarea {
                 font-size: 16px;
-                /* Mobile typing zoom fix */
             }
 
-            /* 5. BOTTOM NAVIGATION BAR */
             .bottom-nav {
                 display: flex !important;
                 position: fixed;
@@ -1029,7 +973,6 @@
                 justify-content: space-around;
                 align-items: center;
                 padding-bottom: 5px;
-                /* Safe area */
             }
 
             .nav-item {
@@ -1055,7 +998,6 @@
             }
         }
 
-        /* Desktop par Nav chupana */
         .bottom-nav {
             display: none;
         }
@@ -1248,7 +1190,8 @@
                         <thead>
                             <tr>
                                 <th>Order ID</th>
-                                <th>Customer & Address</th>
+                                <th>Customer Info</th>
+                                <th>City</th>
                                 <th>Items</th>
                                 <th>Total</th>
                                 <th>Status</th>
@@ -1485,7 +1428,6 @@
         if (id === 'add-product') { if (!isEditing) resetForm(); }
     }
 
-    // Global Chart Variable
     let mySalesChart = null;
 
     async function loadStats() {
@@ -1494,20 +1436,15 @@
             const data = await res.json();
 
             if (data.success) {
-                // 1. Basic Cards Update
                 document.getElementById('dashEarnings').innerText = data.total_earnings.toLocaleString();
                 document.getElementById('dashOrders').innerText = data.total_orders;
                 document.getElementById('dashCancelled').innerText = data.cancelled_orders;
                 document.getElementById('dashPending').innerText = data.pending_orders;
                 document.getElementById('dashCompleted').innerText = data.completed_orders;
 
-                // Low Stock Count (Card wala)
                 lowStockCache = data.low_stock_items || [];
                 document.getElementById('dashLowStock').innerText = data.low_stock_count;
 
-                // 2. Charts Initialize Karen
-                // Note: Hum 'allOrdersData' use karenge jo 'loadOrders' se aata hai. 
-                // Agar wo empty hai to pehle fetch karenge.
                 if (!allOrdersData || allOrdersData.length === 0) {
                     const orderRes = await fetch(`${API_URL}/admin/orders`);
                     const orderJson = await orderRes.json();
@@ -1519,92 +1456,59 @@
         } catch (err) { console.error(err); }
     }
 
-    // --- DASHBOARD CHARTS UPDATE FUNCTION ---
 
     function updateDashboardCharts(stats, orders) {
-        // ============================================
-        // 1. PIE CHART RINGS (Red, Green, Blue)
-        // ============================================
 
-        // Total calculate kar len (Divide by zero se bachne ke liye)
         let total = stats.total_orders || 1;
 
-        // --- A. Red Ring: Total Order (Success Rate) ---
-        // Logic: Completed vs Total
         let orderPercent = Math.round((stats.completed_orders / total) * 100);
         if (stats.total_orders === 0) orderPercent = 0;
         setExactRing('circleTotalOrder', 'valTotalOrder', orderPercent, '#FF5B5B', '#FFE5E5');
-
-
-        // --- B. Green Ring: PENDING ORDERS (Updated) ---
-        // Logic: Pending Orders vs Total Orders
-        // Formula: (Pending / Total) * 100
         let pendingPercent = Math.round((stats.pending_orders / total) * 100);
-
-        // Agar data 0 hai to 0% dikhaye
         if (stats.total_orders === 0) pendingPercent = 0;
-
-        // Color: Green (#00B67A) with Light Track (#E0F5EB)
-        // Note: Maine color Green hi rakha hai taake design same rahay
         setExactRing('circlePending', 'valPending', pendingPercent, '#00B67A', '#E0F5EB');
-
-
-        // --- C. Blue Ring: Total Revenue ---
-        // Logic: Earnings vs Target (e.g. 100,000 PKR)
         let target = 100000;
         let revenuePercent = Math.round((stats.total_earnings / target) * 100);
         if (revenuePercent > 100) revenuePercent = 100;
-
         setExactRing('circleRevenue', 'valRevenue', revenuePercent, '#2D9CDB', '#E0F2FE');
-        // ============================================
-        // 2. LINE CHART (Order Trends - Last 7 Days)
-        // ============================================
         updateLineChart(orders);
     }
 
-    // --- HELPER 1: RINGS DRAW KARNE KE LIYE ---
     function setExactRing(circleId, textId, percent, colorMain, colorTrack) {
         const circle = document.getElementById(circleId);
         const text = document.getElementById(textId);
 
         if (circle && text) {
             text.innerText = percent + "%";
-            // Conic Gradient: Main color se start hoke percentage tak jata hai, baqi track color hota hai
             circle.style.background = `conic-gradient(${colorMain} ${percent * 3.6}deg, ${colorTrack} 0deg)`;
         }
     }
 
-    // --- HELPER 2: LINE CHART DRAW KARNE KE LIYE ---
     function updateLineChart(orders) {
         const ctx = document.getElementById('salesChart');
-        if (!ctx) return; // Agar element na mile to ruk jao
-
-        // 1. Last 7 Days ka data calculate karna
+        if (!ctx) return;
         const labels = [];
         const salesData = [];
 
         for (let i = 6; i >= 0; i--) {
             const d = new Date();
             d.setDate(d.getDate() - i);
-            const dateStr = d.toLocaleDateString('en-GB'); // Format: DD/MM/YYYY
+            const dateStr = d.toLocaleDateString('en-GB');
 
-            labels.push(dateStr); // X-Axis ke liye Date
+            labels.push(dateStr);
 
-            // Us date ke orders count karna
             const count = orders.filter(o => {
                 const oDate = new Date(o.created_at).toLocaleDateString('en-GB');
                 return oDate === dateStr;
             }).length;
 
-            salesData.push(count); // Y-Axis ke liye Count
+            salesData.push(count);
         }
 
-        // 2. Agar purana chart hai to destroy karo (Duplicate se bachne ke liye)
         if (mySalesChart) {
             mySalesChart.destroy();
         }
 
-        // 3. Naya Chart Create karo
         mySalesChart = new Chart(ctx.getContext('2d'), {
             type: 'line',
             data: {
@@ -1612,10 +1516,10 @@
                 datasets: [{
                     label: 'Total Orders',
                     data: salesData,
-                    borderColor: '#2D9CDB', // Blue Line
-                    backgroundColor: 'rgba(45, 156, 219, 0.1)', // Light Blue Fill
+                    borderColor: '#2D9CDB',
+                    backgroundColor: 'rgba(45, 156, 219, 0.1)',
                     borderWidth: 3,
-                    tension: 0.4, // Wavy Curve Effect
+                    tension: 0.4,
                     fill: true,
                     pointBackgroundColor: '#fff',
                     pointBorderColor: '#2D9CDB',
@@ -1627,7 +1531,7 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { display: false }, // Legend chupa diya (Clean Look)
+                    legend: { display: false },
                     tooltip: {
                         backgroundColor: '#1e293b',
                         padding: 10,
@@ -1638,18 +1542,17 @@
                 scales: {
                     y: {
                         beginAtZero: true,
-                        ticks: { stepSize: 1 }, // Decimal values na dikhaye (1.5 orders nahi ho sakte)
-                        grid: { borderDash: [5, 5], color: '#f1f5f9' } // Halka grid
+                        ticks: { stepSize: 1 },
+                        grid: { borderDash: [5, 5], color: '#f1f5f9' }
                     },
                     x: {
-                        grid: { display: false } // X-axis grid hide
+                        grid: { display: false }
                     }
                 }
             }
         });
     }
 
-    // Helper to set Circular CSS
     function setCircleProgress(circleId, textId, percent, color) {
         const circle = document.getElementById(circleId);
         const text = document.getElementById(textId);
@@ -1666,55 +1569,35 @@
         const tableHead = document.querySelector('#detailsTable thead');
         const tableBody = document.getElementById('detailsTableBody');
 
-        tableBody.innerHTML = '<tr><td colspan="6" align="center" style="padding:20px;">Loading...</td></tr>';
+        tableBody.innerHTML = '<tr><td colspan="7" align="center" style="padding:20px;">Loading...</td></tr>';
 
+        // Low Stock Logic (Ye same rahega)
         if (type === 'low-stock') {
             titleEl.innerText = 'Low Stock Products';
-            tableHead.innerHTML = `
-            <tr>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Stock Left</th>
-                <th style="text-align:center;">Action</th>
-            </tr>`;
-
-            if (lowStockCache.length === 0) {
-                tableBody.innerHTML = '<tr><td colspan="5" align="center" style="padding:20px;">No low stock items found.</td></tr>';
-                return;
-            }
-
+            tableHead.innerHTML = `<tr><th>Image</th><th>Title</th><th>Price</th><th>Stock Left</th><th style="text-align:center;">Action</th></tr>`;
+             if (lowStockCache.length === 0) { tableBody.innerHTML = '<tr><td colspan="5" align="center">No low stock items.</td></tr>'; return; }
             let html = '';
             lowStockCache.forEach(p => {
-                let img = (p.images && p.images.length > 0) ? `/${p.images[0].replace(/\\/g, '/')}` : 'https://placehold.co/50';
-
-                html += `
-             <tr>
-                <td data-label="Image"><img src="${img}" class="product-thumb"></td>
-                <td data-label="Product"><strong>${p.title}</strong></td>
-                <td data-label="Price">PKR ${p.price}</td>
-                <td data-label="Stock"><span class="status-pill pill-red" style="font-size:14px;">${p.stock} Units</span></td>
-                <td data-label="Action" style="text-align:center;">
-                    <button class="btn-modern btn-save" onclick="switchTab('products')" style="width:100%; margin:0 auto; padding: 10px;">
-                        <i class="fas fa-tasks"></i> Manage
-                    </button>
-                </td>
-             </tr>`;
+                let img = (p.images && p.images.length > 0) ? `${p.images[0].replace(/\\/g, '/')}` : 'https://placehold.co/50';
+                html += `<tr><td data-label="Image"><img src="${img}" class="product-thumb"></td><td data-label="Product"><strong>${p.title}</strong></td><td data-label="Price">PKR ${p.price}</td><td data-label="Stock"><span class="status-pill pill-red">${p.stock} Units</span></td><td data-label="Action" style="text-align:center;"><button class="btn-modern btn-save" onclick="switchTab('products')" style="width:100%; margin:0 auto;"><i class="fas fa-tasks"></i> Manage</button></td></tr>`;
             });
             tableBody.innerHTML = html;
             return;
         }
 
+        // Title Setup
         let filterStatus = '';
         if (type === 'pending') { titleEl.innerText = 'Pending Orders'; filterStatus = 'Pending'; }
         else if (type === 'cancelled') { titleEl.innerText = 'Cancelled Orders'; filterStatus = 'Cancelled'; }
         else if (type === 'completed') { titleEl.innerText = 'Completed Orders'; filterStatus = 'Delivered'; }
         else { titleEl.innerText = 'All Orders'; filterStatus = 'All'; }
 
+        // --- HEADER UPDATE (Address -> City) ---
         tableHead.innerHTML = `
         <tr>
             <th>Order ID</th>
-            <th>Customer</th>
+            <th>Customer Info</th>
+            <th>City</th>
             <th>Items</th>
             <th>Total</th>
             <th>Status</th>
@@ -1729,7 +1612,7 @@
         }
 
         if (filteredOrders.length === 0) {
-            tableBody.innerHTML = '<tr><td colspan="6" align="center" style="padding:20px;">No orders found in this category.</td></tr>';
+            tableBody.innerHTML = '<tr><td colspan="7" align="center" style="padding:20px;">No orders found.</td></tr>';
             return;
         }
 
@@ -1748,34 +1631,36 @@
             }
 
             let options = statuses.map(s => `<option value="${s}" ${o.status === s ? 'selected' : ''}>${s}</option>`).join('');
-            let addressStr = `${o.customer_details.city}`;
+            
+            // --- FIX: SIRF CITY ---
+            let cityStr = o.customer_details.city || 'N/A';
+            let contactNum = o.customer_details.contact || 'N/A';
 
             html += `
         <tr>
             <td data-label="Order ID" style="color:var(--primary); font-weight:bold;">${o.order_id || 'N/A'}</td>
             
-            <td data-label="Customer Details">
+            <td data-label="Customer">
                 <strong>${o.customer_details.name}</strong><br>
-                <span style="font-size:12px; color:#555;">${addressStr}</span>
             </td>
             
-            <td data-label="Order Items">
-                ${itemsHtml} ${cancelNote}
+            <td data-label="City" style="font-weight:600; color:#475569;">
+                ${cityStr}
             </td>
             
-            <td data-label="Total Amount" style="font-weight:bold; color:#2A74ED;">PKR ${o.total_bill || 0}</td>
+            <td data-label="Items">${itemsHtml} ${cancelNote}</td>
+            <td data-label="Total" style="font-weight:bold;">PKR ${o.total_bill || 0}</td>
             
-            <td data-label="Current Status">
-                <select id="status-detail-${o._id}" style="padding:10px; border-radius:8px; border:1px solid #ccc; background:#fff;">
+            <td data-label="Status">
+                <select id="status-detail-${o._id}" style="padding:10px; border-radius:8px; border:1px solid #ccc; width:100%; background:#fff;">
                     ${options}
                 </select>
             </td>
             
             <td data-label="Actions">
                 <div class="action-buttons-container">
-                    <button class="btn-modern btn-save" onclick="updateStatus('${o._id}', 'status-detail-${o._id}')">
-                        <i class="fas fa-save"></i> Update
-                    </button>
+                    <button class="btn-modern btn-save" onclick="updateStatus('${o._id}', 'status-detail-${o._id}')">Save</button>
+                    <button class="btn-modern btn-awb" onclick="printAWB('${o._id}')">AWB</button>
                 </div>
             </td>
         </tr>`;
@@ -1810,7 +1695,6 @@
             if (data.success) {
                 showAlert('success', 'Updated!', 'Order status changed to ' + newStatus);
 
-                // Data refresh karen taake stats aur tables update ho jayen
                 if (typeof loadStats === 'function') loadStats();
                 if (typeof loadOrders === 'function') loadOrders();
 
@@ -1837,9 +1721,8 @@
 
             products.forEach(p => {
                 let imageSrc = (p.images && p.images.length > 0) ? p.images[0] : p.image;
-                let img = imageSrc ? `/${imageSrc.replace(/\\/g, '/')}` : '';
+                let img = imageSrc ? `${imageSrc.replace(/\\/g, '/')}` : '';
 
-                // Note: Har <td> mein 'data-label' add kiya gaya hai
                 tb.innerHTML += `
                 <tr>
                     <td data-label="Image"><img src="${img}" class="product-thumb" onerror="this.src='https://placehold.co/50'"></td>
@@ -1985,33 +1868,50 @@
 
             const statuses = ["Pending", "Packed", "Shipped", "Delivered", "Cancelled"];
 
+            if (!data.orders || data.orders.length === 0) {
+                tb.innerHTML = '<tr><td colspan="7" align="center" style="padding:20px;">No orders found.</td></tr>';
+                return;
+            }
+
             data.orders.forEach(o => {
                 let itemsHtml = o.cart_items.map((i, index) =>
                     `<div style="margin-bottom:4px;">
-                            <b>${index + 1}.</b> ${i.title} <span style="color:#666; font-size:12px;">(x${i.quantity})</span>
-                        </div>`
+                        <b>${index + 1}.</b> ${i.title} <span style="color:#666; font-size:12px;">(x${i.quantity})</span>
+                    </div>`
                 ).join('');
 
                 let cancelNote = '';
                 if (o.status === 'Cancelled') {
                     if (o.cancelledBy === 'customer') {
-                        cancelNote = `<div style="margin-top: 5px; color: #dc2626; font-size: 11px;">Customer cancelled</div>`;
+                        cancelNote = `<div style="margin-top: 5px; color: #dc2626; font-size: 11px; font-weight:bold;"><i class="fas fa-info-circle"></i> Customer cancelled</div>`;
                     } else if (o.cancelledBy === 'admin') {
-                        cancelNote = `<div style="margin-top: 5px; color: #d97706; font-size: 11px;">Admin cancelled</div>`;
+                        cancelNote = `<div style="margin-top: 5px; color: #d97706; font-size: 11px; font-weight:bold;"><i class="fas fa-info-circle"></i> Admin cancelled</div>`;
                     }
                 }
 
                 let options = statuses.map(s => `<option value="${s}" ${o.status === s ? 'selected' : ''}>${s}</option>`).join('');
-                let addressStr = `${o.customer_details.city}`;
+                
+                // --- FIX: SIRF CITY UTHAYA ---
+                let cityStr = o.customer_details.city || 'N/A';
+                let contactNum = o.customer_details.contact || 'N/A';
 
-                // Note: Har <td> mein 'data-label' add kiya gaya hai
                 tb.innerHTML += `
                     <tr>
-                        <td data-label="Order ID" style="color:var(--primary); font-weight:bold;">${o.order_id || 'N/A'}</td>
-                        <td data-label="Customer">
-                            <strong>${o.customer_details.name}</strong><br>
-                            <span style="font-size:12px; color:#555;">${addressStr}</span>
+                        <td data-label="Order ID" style="color:var(--primary); font-weight:bold;">
+                            ${o.order_id || 'N/A'}
                         </td>
+                        
+                        <td data-label="Customer">
+                            <div style="font-weight:bold; color:#1e293b; font-size:14px;">
+                                ${o.customer_details.name}
+                            </div>
+                            
+                        </td>
+
+                        <td data-label="City" style="font-weight:600; color:#475569;">
+                            ${cityStr}
+                        </td>
+
                         <td data-label="Items">${itemsHtml} ${cancelNote}</td>
                         <td data-label="Total" style="font-weight:bold;">PKR ${o.total_bill || 0}</td>
                         
@@ -2104,6 +2004,7 @@
             name: order.customer_details.name,
             contact: order.customer_details.contact,
             city: order.customer_details.city,
+            address: order.customer_details.address,
             amount: order.total_bill,
             date: formattedDate,
             email: order.customer_details.email || "N/A",
