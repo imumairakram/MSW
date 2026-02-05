@@ -63,7 +63,7 @@ A complete, responsive e-commerce application designed store. Built using the **
 The project is organized into a clear directory structure separating the frontend user interface, backend logic, and static assets.
 
 ```text
-msw-enterprises/
+e-commerce-store /
 │
 ├── 📁 assets/               # Static assets (Logos, Icons, Images used in UI)
 ├── 📁 uploads/              # Dynamic folder for product images/videos uploaded by Admin
