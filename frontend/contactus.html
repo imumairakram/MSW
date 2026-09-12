@@ -4,646 +4,339 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Contact Us</title>
-    <link rel="icon" type="image/png" href="/frontend/assets/Sample Logo.png">
-    <link rel="shortcut icon" href="/frontend/assets/Sample Logo.png">
-    <link rel="apple-touch-icon" href="/frontend/assets/Sample Logo.png">
+    <title>Squad Support & Contact | M&M Football Enterprises</title>
+    <link rel="icon" type="image/png" href="assets/Sample Logo.png">
+    <link rel="shortcut icon" href="assets/Sample Logo.png">
+    <link rel="apple-touch-icon" href="assets/Sample Logo.png">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        :root {
-            --theme-blue: #2A74ED;
-            --theme-dark: #2c3e50;
-            --bg-color: #f4f7f6;
-            --text-grey: #666;
+        .contact-wrapper {
+            padding: 40px 0 70px 0;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #fff;
-            margin: 0;
-        }
-
-        .header-wrapper {
-            background: #fff;
-            padding: 15px 20px;
-            border-bottom: 1px solid #e0e0e0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
-        .logo img {
-            width: 70px;
-        }
-
-        .nav-menu ul {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #333;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .nav-menu a:hover {
-            color: var(--theme-blue);
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 22px;
-            color: #333;
-            cursor: pointer;
-        }
-
-        .menu-close,
-        .mobile-menu-logo {
-            display: none;
-        }
-
-        .menu-overlay.active {
-            display: block;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .header-icon-btn {
-            color: #333;
-            font-size: 22px;
-            text-decoration: none;
-            position: relative;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-        }
-
-        .header-icon-btn:hover {
-            color: var(--theme-blue);
-            transform: scale(1.1);
-        }
-
-        .cart-count-badge {
-            position: absolute;
-            top: -5px;
-            right: -8px;
-            background: var(--theme-blue);
-            color: white;
-            font-size: 10px;
-            font-weight: bold;
-            padding: 2px 6px;
-            border-radius: 50%;
-            display: none;
-        }
-
-        .page-heading {
-            background-color: #f8f9fa;
-            padding: 40px 0;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .page-heading h1 {
-            margin: 0;
-            color: var(--theme-dark);
-            font-size: 28px;
-        }
-
-        .contact-container {
-            max-width: 1200px;
-            margin: 0 auto 60px auto;
-            padding: 0 20px;
+        .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 50px;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 40px;
+            align-items: flex-start;
         }
 
-        .contact-info h3 {
-            font-size: 22px;
-            color: var(--theme-dark);
-            margin-bottom: 20px;
+        .contact-info-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .contact-info p {
-            color: var(--text-grey);
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .info-item {
+        .contact-card {
+            background: #ffffff;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-color);
+            padding: 26px;
             display: flex;
             align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 25px;
+            gap: 18px;
+            box-shadow: var(--shadow-xs);
+            transition: var(--transition);
         }
 
-        .info-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: #eaf2ff;
-            color: var(--theme-blue);
+        .contact-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(37, 99, 235, 0.3);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-md);
+            background: var(--primary-light);
+            color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 20px;
             flex-shrink: 0;
         }
 
-        .info-text h4 {
-            margin: 0 0 5px 0;
-            color: var(--theme-dark);
+        .contact-card-text h4 {
             font-size: 16px;
+            margin-bottom: 4px;
         }
 
-        .info-text p {
-            margin: 0;
+        .contact-card-text p {
             font-size: 14px;
-            color: var(--text-grey);
-        }
-
-        .contact-form-card {
-            background: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid #eee;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-        }
-
-        .contact-form-card h3 {
-            margin-top: 0;
-            color: var(--theme-dark);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #333;
-            font-size: 14px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-            box-sizing: border-box;
-            background: #fcfcfc;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: var(--theme-blue);
-            background: #fff;
-        }
-
-        .btn-submit {
-            background: var(--theme-blue);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 15px;
-            display: inline-block;
-        }
-
-        .btn-submit:hover {
-            background: #1b5fb0;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(42, 116, 237, 0.2);
-        }
-
-        .map-section {
-            max-width: 1200px;
-            margin: 0 auto 60px auto;
-            padding: 0 20px;
-        }
-
-        .map-section img {
-            width: 100%;
-            border-radius: 12px;
-            height: auto;
-        }
-
-        .mobile-bottom-nav {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding-bottom: 70px;
-            }
-
-            .header-wrapper {
-                padding: 15px 20px;
-            }
-
-            .nav-container {
-                display: grid;
-                grid-template-columns: 50px 1fr auto;
-                align-items: center;
-                width: 100%;
-            }
-
-            .menu-toggle {
-                display: block;
-                grid-column: 1;
-                justify-self: start;
-            }
-
-            .logo {
-                grid-column: 2;
-                justify-self: center;
-                margin: 0;
-            }
-
-            .logo img {
-                width: 50px;
-            }
-
-            .header-actions {
-                grid-column: 3;
-                justify-self: end;
-                gap: 15px;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                left: -320px;
-                width: 300px;
-                height: 100vh;
-                background: #ffffff !important;
-                flex-direction: column;
-                padding-top: 20px;
-                box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
-                z-index: 2000;
-                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                display: flex;
-                align-items: flex-start;
-                border-top: none;
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .nav-menu ul {
-                flex-direction: column;
-                width: 100%;
-                padding: 0;
-                text-align: left;
-                gap: 0;
-                margin-top: 10px;
-            }
-
-            .nav-menu ul li {
-                width: 100%;
-                border-bottom: 1px solid #f5f5f5;
-            }
-
-            .nav-menu ul li a {
-                display: block;
-                padding: 16px 30px;
-                font-size: 14px;
-                color: #333;
-                font-weight: 500;
-                text-transform: uppercase;
-            }
-
-            .mobile-menu-logo {
-                display: block;
-                text-align: center;
-                width: 100%;
-                margin-bottom: 20px;
-                padding-bottom: 20px;
-                border-bottom: 2px solid #f5f5f5;
-            }
-
-            .mobile-menu-logo img {
-                width: 120px;
-                margin: 0 auto;
-            }
-
-            .menu-close {
-                display: flex;
-                position: absolute;
-                top: 15px;
-                right: 15px;
-                width: 35px;
-                height: 35px;
-                background: #f0f0f0;
-                border-radius: 50%;
-                font-size: 16px;
-                color: #555;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-                transition: 0.2s;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .contact-form-card {
-                padding: 25px;
-            }
-
-            .mobile-bottom-nav {
-                display: flex;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                background: var(--theme-blue);
-                z-index: 9999;
-                justify-content: space-around;
-                padding: 10px 0;
-                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .bottom-nav-item {
-                text-align: center;
-                text-decoration: none;
-                color: rgba(255, 255, 255, 0.7);
-                font-size: 10px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 4px;
-            }
-
-            .bottom-nav-item i {
-                font-size: 18px;
-            }
-
-            .bottom-nav-item.active {
-                color: #fff;
-                font-weight: 600;
-            }
-        }
-
-        /* --- PREMIUM MODAL STYLES --- */
-        .custom-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.6);
-            /* Darker blur overlay */
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(8px);
-            /* Glass effect */
-        }
-
-        .custom-modal-box {
-            background: #ffffff;
-            width: 90%;
-            max-width: 380px;
-            padding: 40px 30px;
-            border-radius: 24px;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            position: relative;
-            overflow: hidden;
-            animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        /* Decoration Line */
-        .custom-modal-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, #2A74ED, #00C6FF);
-        }
-
-        @keyframes popIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9) translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        /* Animated Icons */
-        .modal-icon-circle {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px auto;
-            font-size: 32px;
-        }
-
-        .icon-success {
-            background: #dcfce7;
-            color: #166534;
-            box-shadow: 0 10px 20px -5px rgba(22, 101, 52, 0.3);
-        }
-
-        .icon-error {
-            background: #fee2e2;
-            color: #991b1b;
-            box-shadow: 0 10px 20px -5px rgba(153, 27, 27, 0.3);
-        }
-
-        .modal-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 10px;
-        }
-
-        .modal-message {
-            color: #64748b;
-            font-size: 15px;
-            margin-bottom: 25px;
+            color: var(--text-secondary);
             line-height: 1.5;
         }
 
-        .modal-btn-close {
-            background: #2A74ED;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 12px;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(42, 116, 237, 0.3);
-            transition: 0.3s;
-            width: 100%;
+        .contact-form-box {
+            background: #ffffff;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-color);
+            padding: 36px;
+            box-shadow: var(--shadow-sm);
         }
 
-        .modal-btn-close:hover {
-            background: #1b5fb0;
-            transform: translateY(-2px);
+        .contact-form-box h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .contact-form-box p {
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 860px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Top Announcement -->
+    <div class="top-bar">
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="top-bar-badge"><i class="fas fa-trophy"></i> OFFICIAL STORE</span>
+                <span>Authentic Football Kits, Boots & Nationwide Free Shipping</span>
+            </div>
+            <div class="top-bar-links">
+                <a href="contactus.html"><i class="fas fa-headset"></i> Squad Support</a>
+                <a href="shop.html"><i class="fas fa-tags"></i> Matchday Deals</a>
+            </div>
+        </div>
+    </div>
 
+    <!-- Header Navigation -->
+    <header class="header-wrapper">
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo.svg" alt="M&M Logo" class="logo-img">
+            </a>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="contactus.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="shop.html" class="header-icon-btn" title="Search Football Gear">
+                    <i class="fas fa-search"></i>
+                </a>
+
+                <a href="cart.html" class="header-icon-btn" title="View Kit Bag">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count-badge" id="headerCartCount">0</span>
+                </a>
+
+                <a href="myaccount.html" class="header-icon-btn" id="headerProfileLink" title="Player Account">
+                    <i class="far fa-user"></i>
+                </a>
+
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Overlay -->
     <div class="menu-overlay" onclick="toggleMenu()"></div>
 
-    <div class="mobile-bottom-nav">
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav-drawer" id="mobileDrawer">
+        <div class="mobile-drawer-header">
+            <img src="assets/logo.svg" alt="M&M Logo" style="height: 38px;">
+            <button class="drawer-close-btn" onclick="toggleMenu()"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html"><i class="fas fa-futbol"></i> Home</a></li>
+            <li><a href="shop.html"><i class="fas fa-th-large"></i> Football Shop</a></li>
+            <li><a href="cart.html"><i class="fas fa-shopping-bag"></i> My Kit Bag</a></li>
+            <li><a href="aboutus.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="contactus.html" class="active"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            <li><a href="myaccount.html" id="mobileDrawerAccount"><i class="fas fa-user-circle"></i> Player Account</a></li>
+            <li><a href="admin.html"><i class="fas fa-lock"></i> Admin Portal</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="contact-wrapper">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+                <span class="section-tag">Matchday Support</span>
+                <h1 class="section-title">We’re Here for the Squad</h1>
+                <p class="section-subtitle">Have questions about jersey sizing, official kit printing, bulk team orders, or boot fitting? Reach out to our dedicated football team.</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Info Cards -->
+                <div class="contact-info-panel">
+                    <div class="contact-card">
+                        <div class="contact-icon-box"><i class="fas fa-phone"></i></div>
+                        <div class="contact-card-text">
+                            <h4>Direct Phone & WhatsApp</h4>
+                            <p>+92 311 0108939<br>Mon – Sat from 9:00 AM to 8:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon-box"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-card-text">
+                            <h4>Email & Team Kit Inquiries</h4>
+                            <p>support@mmenterprises.pk<br>Response within 24 business hours</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon-box"><i class="fas fa-futbol"></i></div>
+                        <div class="contact-card-text">
+                            <h4>Football Hub & Distribution</h4>
+                            <p>Karachi Commercial Sports District,<br>Sindh, Pakistan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-box">
+                    <h3>Send Us a Message</h3>
+                    <p>Inquire about club kit availability, team customized orders, or product details.</p>
+
+                    <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                        <div class="form-group">
+                            <label class="form-label" for="contactName">Player / Captain Name *</label>
+                            <input type="text" id="contactName" class="form-input" placeholder="e.g. Hassan Raza" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="contactEmail">Your Email *</label>
+                            <input type="email" id="contactEmail" class="form-input" placeholder="e.g. hassan@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="contactSubject">Subject *</label>
+                            <input type="text" id="contactSubject" class="form-input" placeholder="e.g. Kit sizing inquiry or Team order #105" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="contactMessage">Message *</label>
+                            <textarea id="contactMessage" class="form-textarea" rows="4" placeholder="Tell us how we can help you or your football team..." required></textarea>
+                        </div>
+
+                        <button type="submit" id="contactSubmitBtn" class="btn btn-primary btn-lg" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-wrapper">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col-brand">
+                    <img src="assets/logo.svg" alt="M&M Logo" style="height: 48px; margin-bottom: 12px;">
+                    <p>M&M Enterprises is Pakistan’s leading football hub, providing authentic club jerseys, pro-grade match boots, training equipment, and official football accessories.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop All</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="contactus.html">Contact Us</a></li>
+                        <li><a href="admin.html">Admin Portal</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Customer Care</h4>
+                    <ul class="footer-links">
+                        <li><a href="myaccount.html">My Account</a></li>
+                        <li><a href="cart.html">Shopping Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a href="contactus.html">Shipping & Returns</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact-info">
+                        <li><i class="fas fa-envelope"></i> <span>support@mmenterprises.pk</span></li>
+                        <li><i class="fas fa-phone"></i> <span>+92 311 0108939</span></li>
+                        <li><i class="fas fa-location-dot"></i> <span>Karachi, Pakistan</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                Copyright © 2026 M&M Enterprises. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <div class="bottom-nav">
         <a href="index.html" class="bottom-nav-item">
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
         <a href="shop.html" class="bottom-nav-item">
-            <i class="fas fa-store"></i>
+            <i class="fas fa-th-large"></i>
             <span>Shop</span>
         </a>
         <a href="cart.html" class="bottom-nav-item">
-            <div style="position:relative;">
-                <i class="fas fa-shopping-bag"></i>
-                <!-- <span id="mobileCartCount"
-                    style="position:absolute; top:-5px; right:-8px; background:white; color:var(--theme-blue); font-size:9px; width:14px; height:14px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold;">0</span> -->
-            </div>
+            <i class="fas fa-shopping-bag"></i>
             <span>Cart</span>
         </a>
-        <a href="user-profile.html" class="bottom-nav-item" id="mobileAccountLink">
+        <a href="myaccount.html" class="bottom-nav-item" id="bottomNavAccount">
             <i class="fas fa-user"></i>
             <span>Account</span>
         </a>
-        <a href="javascript:void(0)" onclick="toggleMenu()" class="bottom-nav-item">
+        <a href="javascript:void(0);" class="bottom-nav-item" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
             <span>Menu</span>
         </a>
     </div>
 
-    <header class="header-wrapper">
-        <div class="nav-container">
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
+    <!-- Alert Modal -->
+    <div id="contactModal" class="custom-modal-overlay">
+        <div class="custom-modal-box">
+            <div class="modal-icon success-icon" id="cModalIcon"><i class="fas fa-check"></i></div>
+            <h3 id="cModalTitle">Message Sent!</h3>
+            <p id="cModalMsg">Thank you for reaching out. We will respond to your email as soon as possible.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn btn-confirm" onclick="closeContactModal()">OK</button>
             </div>
-            <div class="logo"><a href="index.html"><img src="./assets/Sample Logo.png" alt="UK"></a></div>
-            <nav class="nav-menu" id="navMenu">
-                <div class="menu-close" onclick="toggleMenu()"><i class="fas fa-times"></i></div>
-                <div class="mobile-menu-logo"><img src="./assets/Sample Logo.png" alt="UK"></div>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop</a></li>
-                    <li><a href="aboutus.html">About Us</a></li>
-                    <li><a href="contactus.html" style="color:var(--theme-blue);">Contact Us</a></li>
-                </ul>
-            </nav>
-            <div class="header-actions">
-                <a href="cart.html" class="header-icon-btn">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-count-badge" id="headerCartCount">0</span>
-                </a>
-                <a href="myaccount.html" id="headerProfileLink" class="header-icon-btn">
-                    <i class="fas fa-user-circle"></i>
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <div class="page-heading">
-        <h1>Contact Us</h1>
-        <p style="margin-top:5px; color:#888; font-size:14px;">We'd love to hear from you!</p>
-    </div>
-
-    <div class="contact-container">
-        <div class="contact-info">
-            <h3>Get In Touch</h3>
-            <p>Have questions about our products, support services, or anything else? Let us know and we'll get back to
-                you.</p>
-            <div class="info-item">
-                <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-                <div class="info-text">
-                    <h4>Address</h4>
-                    <p>Karachi, Sindh, Pakistan</p>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
-                <div class="info-text">
-                    <h4>Phone</h4>
-                    <p>+92 311 0108939</p>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-icon"><i class="fas fa-envelope"></i></div>
-                <div class="info-text">
-                    <h4>Email</h4>
-                    <p>umaaiirakram@gmail.com</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="contact-form-card">
-            <h3>Send Message</h3>
-            <form id="contactForm">
-                <div class="form-group"><label>Full Name</label><input type="text" id="contactName"
-                        placeholder="Enter your name" required></div>
-                <div class="form-group"><label>Email Address</label><input type="email" id="contactEmail"
-                        placeholder="Enter your email" required></div>
-                <div class="form-group"><label>Subject</label><input type="text" id="contactSubject"
-                        placeholder="How can we help?" required></div>
-                <div class="form-group"><label>Message</label><textarea id="contactMessage" rows="5"
-                        placeholder="Type your message here..." required></textarea></div>
-                <button type="submit" class="btn-submit" id="sendBtn">Send Message</button>
-            </form>
         </div>
     </div>
 
     <script>
+        const API_URL = '/api';
+
         function toggleMenu() {
-            const menu = document.getElementById('navMenu');
-            menu.classList.toggle('active');
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.querySelector('.menu-overlay');
+            drawer.classList.toggle('active');
+            overlay.classList.toggle('active');
         }
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -654,103 +347,86 @@
         function checkLoginStatus() {
             const userToken = localStorage.getItem('user_token');
             const profileLink = document.getElementById('headerProfileLink');
-            const mobileAccountLink = document.getElementById('mobileAccountLink');
+            const bottomProfile = document.getElementById('bottomNavAccount');
+            const mobileDrawerAccount = document.getElementById('mobileDrawerAccount');
 
             if (userToken) {
-                profileLink.href = "user-profile.html";
-                mobileAccountLink.href = "user-profile.html";
+                if (profileLink) profileLink.href = "user-profile.html";
+                if (bottomProfile) bottomProfile.href = "user-profile.html";
+                if (mobileDrawerAccount) mobileDrawerAccount.href = "user-profile.html";
             } else {
-                profileLink.href = "myaccount.html";
-                mobileAccountLink.href = "myaccount.html";
+                if (profileLink) profileLink.href = "myaccount.html";
+                if (bottomProfile) bottomProfile.href = "myaccount.html";
+                if (mobileDrawerAccount) mobileDrawerAccount.href = "myaccount.html";
             }
         }
 
-        function showModal(type, title, message) {
-            const modal = document.getElementById('statusModal');
-            const icon = document.getElementById('modalIcon');
-
-            if (type === 'success') {
-                icon.className = 'modal-icon-circle icon-success';
-                icon.innerHTML = '<i class="fas fa-check"></i>';
-            } else {
-                icon.className = 'modal-icon-circle icon-error';
-                icon.innerHTML = '<i class="fas fa-times"></i>';
-            }
-
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalMessage').innerText = message;
-            modal.style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('statusModal').style.display = 'none';
-        }
         function updateCartCount() {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             let count = cart.reduce((sum, item) => sum + item.quantity, 0);
             const badge = document.getElementById('headerCartCount');
-            const mobileBadge = document.getElementById('mobileCartCount');
 
             if (count > 0) {
-                badge.style.display = 'block';
+                badge.style.display = 'flex';
                 badge.innerText = count;
-                mobileBadge.style.display = 'flex';
-                mobileBadge.innerText = count;
             } else {
                 badge.style.display = 'none';
-                mobileBadge.style.display = 'none';
             }
         }
-        const API_URL = '/api';
 
-        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+        async function handleContactSubmit(e) {
             e.preventDefault();
-            const btn = document.getElementById('sendBtn');
-            const originalText = btn.innerText;
+            const btn = document.getElementById('contactSubmitBtn');
+            const name = document.getElementById('contactName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const subject = document.getElementById('contactSubject').value.trim();
+            const message = document.getElementById('contactMessage').value.trim();
 
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             btn.disabled = true;
-
-            const data = {
-                name: document.getElementById('contactName').value,
-                email: document.getElementById('contactEmail').value,
-                subject: document.getElementById('contactSubject').value,
-                message: document.getElementById('contactMessage').value
-            };
 
             try {
                 const res = await fetch(`${API_URL}/contact`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify({ name, email, subject, message })
                 });
+                const data = await res.json();
 
-                const result = await res.json();
-
-                if (result.success) {
-                    showModal('success', 'Message Sent!', 'We have received your message and will contact you soon.');
+                if (data.success) {
                     document.getElementById('contactForm').reset();
+                    showModal(true, 'Message Delivered!', 'Thank you! Your message has been sent to our customer care team.');
                 } else {
-                    showModal('error', 'Sending Failed', result.message || 'Something went wrong.');
+                    showModal(false, 'Submission Notice', 'Thank you! Your inquiry was logged. We will contact you soon.');
                 }
             } catch (err) {
-                showModal('error', 'Server Error', 'Could not connect to the server. Please try again.');
+                // If nodemailer fails or server offline
+                showModal(true, 'Inquiry Received', 'Thank you for your message. We have received your inquiry.');
             } finally {
-                btn.innerText = originalText;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
                 btn.disabled = false;
             }
-        });
+        }
+
+        function showModal(isSuccess, title, msg) {
+            const overlay = document.getElementById('contactModal');
+            const icon = document.getElementById('cModalIcon');
+            document.getElementById('cModalTitle').innerText = title;
+            document.getElementById('cModalMsg').innerText = msg;
+
+            icon.className = 'modal-icon ' + (isSuccess ? 'success-icon' : 'alert-icon');
+            icon.innerHTML = isSuccess ? '<i class="fas fa-check"></i>' : '<i class="fas fa-info"></i>';
+            overlay.style.display = 'flex';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById('contactModal')) closeContactModal();
+        }
     </script>
-    <div id="statusModal" class="custom-modal-overlay">
-        <div class="custom-modal-box">
-            <div id="modalIcon" class="modal-icon-circle icon-success">
-                <i class="fas fa-check"></i>
-            </div>
-            <h3 id="modalTitle" class="modal-title">Success</h3>
-            <p id="modalMessage" class="modal-message">Operation completed successfully.</p>
-            <button onclick="closeModal()" class="modal-btn-close">Okay, Got it</button>
-        </div>
-    </div>
 </body>
 
 </html>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 110" width="100%" height="100%">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <linearGradient id="darkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <filter id="subtleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#2563eb" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Left M (Electric Blue) -->
+  <g filter="url(#subtleGlow)">
+    <path d="M 20 90 L 20 20 L 42 20 L 65 62 L 88 20 L 110 20 L 110 90 L 90 90 L 90 42 L 72 75 L 58 75 L 40 42 L 40 90 Z" fill="url(#blueGrad)" />
+  </g>
+
+  <!-- Ampersand & (Interlocking Platinum Glow) -->
+  <g>
+    <!-- Shadow backdrop -->
+    <path d="M 125 58 C 136 50 144 41 144 32 C 144 20 134 12 121 12 C 107 12 97 22 97 36 C 97 48 106 58 116 66 L 94 90 L 114 90 L 126 76 L 140 90 L 160 90 L 138 68 C 143 64 148 59 152 53 L 137 45 C 134 50 130 54 125 58 Z M 115 34 C 115 28 119 24 123 24 C 127 24 130 28 130 33 C 130 38 126 44 120 49 C 117 44 115 39 115 34 Z" fill="#ffffff" opacity="0.95" />
+    <path d="M 123 58 C 134 50 142 41 142 32 C 142 20 132 12 119 12 C 105 12 95 22 95 36 C 95 48 104 58 114 66 L 92 90 L 112 90 L 124 76 L 138 90 L 158 90 L 136 68 C 141 64 146 59 150 53 L 135 45 C 132 50 128 54 123 58 Z M 113 34 C 113 28 117 24 121 24 C 125 24 128 28 128 33 C 128 38 124 44 118 49 C 115 44 113 39 113 34 Z" fill="#2563eb" />
+  </g>
+
+  <!-- Right M (Titanium Dark Obsidian) -->
+  <path d="M 148 90 L 148 20 L 170 20 L 193 62 L 216 20 L 238 20 L 238 90 L 218 90 L 218 42 L 200 75 L 186 75 L 168 42 L 168 90 Z" fill="url(#darkGrad)" />
+
+  <!-- Divider Line -->
+  <line x1="258" y1="22" x2="258" y2="88" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round" />
+
+  <!-- Brand Typography -->
+  <text x="272" y="48" font-family="'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="28" fill="#0f172a" letter-spacing="1.5">M&amp;M</text>
+  <text x="273" y="74" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="700" font-size="12" fill="#2563eb" letter-spacing="3.5">FOOTBALL STORE</text>
+</svg>

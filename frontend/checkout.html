@@ -4,583 +4,140 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Checkout</title>
-    <link rel="icon" type="image/png" href="/frontend/assets/Sample Logo.png">
-    <link rel="shortcut icon" href="/frontend/assets/Sample Logo.png">
-    <link rel="apple-touch-icon" href="/frontend/assets/Sample Logo.png">
+    <title>Matchday Checkout | M&M Football Store</title>
+    <link rel="icon" type="image/png" href="assets/Sample Logo.png">
+    <link rel="shortcut icon" href="assets/Sample Logo.png">
+    <link rel="apple-touch-icon" href="assets/Sample Logo.png">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link rel='stylesheet'
-        href='https://xstore.8theme.com/elementor/demos/minimal-electronics/wp-content/themes/xstore/xstore.min.css'
-        type='text/css' media='all' />
-
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        :root {
-            --theme-blue: #2A74ED;
-            --theme-dark: #2c3e50;
-            --theme-gray: #f4f7f6;
-            --text-light: #7e8299;
+        .checkout-wrapper {
+            padding: 40px 0 70px 0;
         }
 
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--theme-gray);
-            margin: 0;
-            padding-bottom: 40px;
-        }
-
-        .header-wrapper {
-            background: #fff;
-            padding: 15px 20px;
-            border-bottom: 1px solid #e0e0e0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
-        .logo img {
-            width: 70px;
-            height: auto;
-            display: block;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .nav-menu ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: 0.2s;
-        }
-
-        .nav-menu a:hover {
-            color: var(--theme-blue);
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .header-icon-btn {
-            color: #333;
-            font-size: 22px;
-            text-decoration: none;
-            position: relative;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #f5f5f5;
-        }
-
-        .header-icon-btn:hover {
-            background: var(--theme-blue);
-            color: white;
-        }
-
-        .menu-toggle,
-        .menu-close,
-        .mobile-menu-logo {
-            display: none;
-        }
-
-        .page-header {
-            background: #fff;
-            padding: 40px 0;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 40px;
-        }
-
-        .page-header h1 {
-            margin: 0 0 10px;
-            font-size: 28px;
-            color: var(--theme-dark);
-        }
-
-        .checkout-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .checkout-grid {
             display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 40px;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 36px;
+            align-items: flex-start;
         }
 
-        .checkout-form {
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        .checkout-box {
+            background: #ffffff;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-color);
+            padding: 32px;
+            box-shadow: var(--shadow-xs);
         }
 
-        .form-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--theme-dark);
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            color: #555;
-            margin-bottom: 8px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-            background: #fcfcfc;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        .form-group input:focus {
-            border-color: var(--theme-blue);
-            background: #fff;
+        .checkout-box h3 {
+            font-size: 19px;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .order-summary-box {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            padding: 30px;
-            height: fit-content;
-            position: sticky;
-            top: 100px;
-        }
-
-        .summary-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--theme-dark);
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .checkout-items-list {
-            margin-bottom: 20px;
-            max-height: 300px;
-            overflow-y: auto;
+            gap: 16px;
         }
 
         .checkout-item {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            font-size: 14px;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .checkout-item:last-child {
+            border-bottom: none;
         }
 
         .checkout-item img {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 6px;
-            margin-right: 15px;
+            width: 58px;
+            height: 58px;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background: #fff;
+            padding: 3px;
         }
 
-        .item-info {
-            flex-grow: 1;
+        .item-details {
+            flex: 1;
         }
 
-        .item-info h4 {
-            margin: 0;
-            font-size: 14px;
-            color: #333;
-        }
-
-        .item-info p {
-            margin: 4px 0 0;
-            color: #777;
-            font-size: 12px;
-        }
-
-        .item-total {
+        .item-details h4 {
+            font-size: 14.5px;
+            margin-bottom: 2px;
             font-weight: 600;
-            color: var(--theme-dark);
         }
 
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            font-size: 15px;
-            color: #555;
+        .item-details p {
+            font-size: 12.5px;
+            color: var(--text-muted);
         }
 
-        .summary-row.total {
+        .item-cost {
+            font-size: 14.5px;
             font-weight: 700;
-            font-size: 18px;
-            color: var(--theme-dark);
-            border-top: 2px solid #f0f0f0;
-            padding-top: 20px;
-            margin-top: 20px;
+            color: var(--text-primary);
         }
 
-        .place-order-btn {
-            width: 100%;
-            background: var(--theme-blue);
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
+        .payment-option-card {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 10px 20px -10px rgba(42, 116, 237, 0.5);
-            margin-top: 25px;
+            gap: 14px;
+            padding: 16px;
+            border-radius: var(--radius-md);
+            border: 2px solid var(--primary);
+            background: var(--primary-light);
+            margin-top: 16px;
         }
 
-        .place-order-btn:hover {
-            background: #1b5fb0;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px -10px rgba(42, 116, 237, 0.6);
+        .payment-option-card i {
+            font-size: 22px;
+            color: var(--primary);
         }
 
-        .custom-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(3px);
-        }
-
-        .custom-modal-box {
-            background: white;
-            width: 90%;
-            max-width: 400px;
-            padding: 30px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            animation: popIn 0.3s ease-out;
-        }
-
-        @keyframes popIn {
-            from {
-                transform: scale(0.9);
-                opacity: 0;
-            }
-
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .modal-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px auto;
-            font-size: 28px;
-        }
-
-        .success-icon {
-            background: #dcfce7;
-            color: #166534;
-        }
-
-        .error-icon {
-            background: #fee2e2;
-            color: #ef4444;
-        }
-
-        .warning-icon {
-            background: #fef3c7;
-            color: #92400e;
-        }
-
-        .custom-modal-box h3 {
-            margin: 0 0 10px 0;
-            color: var(--theme-dark);
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .custom-modal-box p {
-            color: #777;
-            font-size: 14px;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-
-        .modal-btn {
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            background: var(--theme-blue);
-            color: white;
-            transition: 0.2s;
-        }
-
-        .modal-btn:hover {
-            background: #1b5fb0;
-        }
-
-        .mobile-bottom-nav {
-            display: none;
-        }
-
-        @media (max-width: 992px) {
-            .checkout-container {
+        @media (max-width: 860px) {
+            .checkout-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
             }
-
-            .order-summary-box {
-                position: static;
-            }
-
             .form-row {
                 grid-template-columns: 1fr;
-                gap: 0;
             }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding-bottom: 70px;
-            }
-
-            .nav-container {
-                display: grid;
-                grid-template-columns: 50px 1fr 50px;
-                align-items: center;
-                width: 100%;
-            }
-
-            .menu-toggle {
-                display: block;
-                grid-column: 1;
-                font-size: 22px;
-                cursor: pointer;
-            }
-
-            .logo {
-                grid-column: 2;
-                justify-self: center;
-            }
-
-            .logo img {
-                width: 50px;
-            }
-
-            .header-actions {
-                grid-column: 3;
-                justify-self: end;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                left: -320px;
-                width: 300px;
-                height: 100vh;
-                background: #fff;
-                flex-direction: column;
-                padding-top: 20px;
-                box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
-                z-index: 2000;
-                transition: left 0.3s ease;
-                display: flex;
-                align-items: flex-start;
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .nav-menu ul {
-                flex-direction: column;
-                width: 100%;
-                padding: 0;
-                margin-top: 10px;
-            }
-
-            .nav-menu ul li {
-                width: 100%;
-                border-bottom: 1px solid #f5f5f5;
-            }
-
-            .nav-menu ul li a {
-                display: block;
-                padding: 16px 30px;
-            }
-
-            .menu-close,
-            .mobile-menu-logo {
-                display: flex;
-            }
-
-            .menu-close {
-                position: absolute;
-                top: 15px;
-                right: 15px;
-                width: 35px;
-                height: 35px;
-                background: #f0f0f0;
-                border-radius: 50%;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-            }
-
-            .mobile-menu-logo {
-                display: block;
-                text-align: center;
-                width: 100%;
-                margin-bottom: 20px;
-                padding-bottom: 20px;
-                border-bottom: 2px solid #f5f5f5;
-            }
-
-            .mobile-menu-logo img {
-                width: 120px;
-                margin: 0 auto;
-            }
-
-            .menu-overlay.active {
-                display: block;
-            }
-
-            .mobile-bottom-nav {
-                display: flex;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                background: #2A74ED;
-                justify-content: space-around;
-                align-items: center;
-                padding: 12px 0;
-                z-index: 9999;
-                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .mobile-nav-item {
-                text-decoration: none;
-                color: rgba(255, 255, 255, 0.7);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                font-size: 10px;
-                font-weight: 500;
-            }
-
-            .mobile-nav-item.active,
-            .mobile-nav-item:hover {
-                color: white;
-            }
-
-            .mobile-nav-item i {
-                font-size: 18px;
-                margin-bottom: 4px;
-            }
-        }
-
-        .mobile-nav-item {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.7);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 10px;
-            font-weight: 500;
-            width: 20%;
         }
     </style>
 </head>
 
 <body>
+    <!-- Top Announcement -->
+    <div class="top-bar">
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="top-bar-badge"><i class="fas fa-trophy"></i> OFFICIAL STORE</span>
+                <span>Authentic Football Kits, Boots & Nationwide Free Shipping</span>
+            </div>
+            <div class="top-bar-links">
+                <a href="contactus.html"><i class="fas fa-headset"></i> Squad Support</a>
+                <a href="shop.html"><i class="fas fa-tags"></i> Matchday Deals</a>
+            </div>
+        </div>
+    </div>
 
-    <div class="menu-overlay" onclick="toggleMenu()"></div>
-
+    <!-- Header Navigation -->
     <header class="header-wrapper">
         <div class="nav-container">
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </div>
-            <div class="logo"><a href="index.html"><img src="./assets/Sample Logo.png" alt="UK"></a></div>
-            <nav class="nav-menu" id="navMenu">
-                <div class="menu-close" onclick="toggleMenu()"><i class="fas fa-times"></i></div>
-                <div class="mobile-menu-logo"><img src="./assets/Sample Logo.png" alt="UK"></div>
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo.svg" alt="M&M Logo" class="logo-img">
+            </a>
+
+            <nav class="nav-menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="shop.html">Shop</a></li>
@@ -588,97 +145,184 @@
                     <li><a href="contactus.html">Contact</a></li>
                 </ul>
             </nav>
+
             <div class="header-actions">
-                <a href="cart.html" class="header-icon-btn"><i class="fas fa-shopping-bag"></i></a>
-                <a href="myaccount.html" class="header-icon-btn" id="headerProfileLink"><i
-                        class="fas fa-user-circle"></i></a>
+                <a href="cart.html" class="header-icon-btn" title="View Kit Bag">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count-badge" id="headerCartCount">0</span>
+                </a>
+
+                <a href="myaccount.html" class="header-icon-btn" id="headerProfileLink" title="Player Account">
+                    <i class="far fa-user"></i>
+                </a>
+
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </header>
 
-    <div class="page-header">
-        <h1>Checkout</h1>
-        <p>Complete your order details.</p>
+    <!-- Mobile Drawer Overlay -->
+    <div class="menu-overlay" onclick="toggleMenu()"></div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav-drawer" id="mobileDrawer">
+        <div class="mobile-drawer-header">
+            <img src="assets/logo.svg" alt="M&M Logo" style="height: 38px;">
+            <button class="drawer-close-btn" onclick="toggleMenu()"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html"><i class="fas fa-futbol"></i> Home</a></li>
+            <li><a href="shop.html"><i class="fas fa-th-large"></i> Football Shop</a></li>
+            <li><a href="cart.html"><i class="fas fa-shopping-bag"></i> My Kit Bag</a></li>
+            <li><a href="aboutus.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="contactus.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            <li><a href="myaccount.html" id="mobileDrawerAccount"><i class="fas fa-user-circle"></i> Player Account</a></li>
+            <li><a href="admin.html"><i class="fas fa-lock"></i> Admin Portal</a></li>
+        </ul>
     </div>
 
-    <div class="checkout-container">
-        <div class="checkout-form">
-            <h3 class="form-title">Shipping Information</h3>
-            <form id="orderForm">
-                <div class="form-group">
-                    <label>Full Name <span style="color:red">*</span></label>
-                    <input type="text" id="cName" required>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Contact Number <span style="color:red">*</span></label>
-                        <input type="text" id="cContact" required>
-                    </div>
-                    <div class="form-group">
-                        <label>City <span style="color:red">*</span></label>
-                        <input type="text" id="cCity" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Complete Address <span style="color:red">*</span></label>
-                    <input type="text" id="cAddress" required>
-                </div>
-            </form>
-        </div>
-
-        <div class="order-summary-box">
-            <h3 class="summary-title">Your Order</h3>
-            <div class="checkout-items-list" id="checkoutItems">
+    <!-- Main Content Container -->
+    <main class="checkout-wrapper">
+        <div class="container">
+            <div class="section-header" style="text-align: left; margin-bottom: 28px;">
+                <span class="section-tag">Matchday Delivery</span>
+                <h1 class="section-title">Finalize Your Football Gear Order</h1>
             </div>
 
-            <div class="summary-row"><span>Subtotal</span><span id="summarySubtotal">PKR 0</span></div>
-            <div class="summary-row"><span>Shipping</span><span>Free</span></div>
-            <div class="summary-row total"><span>Total</span><span id="summaryTotal">PKR 0</span></div>
+            <div class="checkout-grid">
+                <!-- Shipping Details Form -->
+                <div class="checkout-box">
+                    <h3><i class="fas fa-map-location-dot" style="color:var(--primary);"></i> Player / Locker Delivery Address</h3>
 
-            <div style="margin-top: 20px; font-size: 14px; color: #555;">
-                <i class="fas fa-money-bill-wave" style="color: var(--theme-blue); margin-right: 8px;"></i> Cash on
-                Delivery (COD)
+                    <form id="checkoutForm" onsubmit="event.preventDefault(); placeOrder();">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="cName">Full Name *</label>
+                                <input type="text" id="cName" class="form-input" placeholder="e.g. Ali Ahmed" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="cContact">Phone Number *</label>
+                                <input type="tel" id="cContact" class="form-input" placeholder="e.g. 03001234567" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="cCity">City *</label>
+                            <input type="text" id="cCity" class="form-input" placeholder="e.g. Lahore, Karachi, Islamabad" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="cAddress">Complete Delivery Address *</label>
+                            <textarea id="cAddress" class="form-textarea" rows="3" placeholder="House #, Street name, Sector/Club Ground/Area, Landmark" required></textarea>
+                        </div>
+
+                        <h3 style="margin-top: 30px;"><i class="fas fa-wallet" style="color:var(--primary);"></i> Payment Method</h3>
+                        <div class="payment-option-card">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <div>
+                                <strong style="font-size: 14.5px; color: var(--text-primary); display: block;">Cash on Delivery (COD)</strong>
+                                <span style="font-size: 12.5px; color: var(--text-secondary);">Pay in cash upon receiving your kit package at your doorstep.</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg place-order-btn" style="width: 100%; margin-top: 28px;">
+                            Confirm Matchday Order ⚽
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Order Items & Total Summary -->
+                <div class="checkout-box">
+                    <h3><i class="fas fa-receipt" style="color:var(--primary);"></i> Matchday Kit Summary</h3>
+                    
+                    <div id="checkoutItems" style="max-height: 320px; overflow-y: auto; padding-right: 4px; margin-bottom: 20px;">
+                        <div style="text-align: center; padding: 20px; color: var(--text-muted);">
+                            <i class="fas fa-spinner fa-spin"></i> Loading order items...
+                        </div>
+                    </div>
+
+                    <div style="border-top: 1px solid var(--border-color); padding-top: 16px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14.5px; color: var(--text-secondary);">
+                            <span>Subtotal</span>
+                            <strong id="summarySubtotal">PKR 0</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14.5px; color: var(--text-secondary);">
+                            <span>Nationwide Shipping</span>
+                            <span id="summaryShipping" style="color: var(--success); font-weight: 600;">FREE</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color); font-size: 18px; font-weight: 800; color: var(--text-primary);">
+                            <span>Total Amount</span>
+                            <span id="summaryTotal" style="color: var(--primary); font-family: 'Outfit', sans-serif; font-size: 22px;">PKR 0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-wrapper">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col-brand">
+                    <img src="assets/logo.svg" alt="M&M Logo" style="height: 48px; margin-bottom: 12px;">
+                    <p>M&M Enterprises delivers premium lifestyle, electronics, and daily essentials with verified authenticity and top-tier customer care.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop All</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="contactus.html">Contact Us</a></li>
+                        <li><a href="admin.html">Admin Portal</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Customer Care</h4>
+                    <ul class="footer-links">
+                        <li><a href="myaccount.html">My Account</a></li>
+                        <li><a href="cart.html">Shopping Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a href="contactus.html">Shipping & Returns</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact-info">
+                        <li><i class="fas fa-envelope"></i> <span>support@mmenterprises.pk</span></li>
+                        <li><i class="fas fa-phone"></i> <span>+92 311 0108939</span></li>
+                        <li><i class="fas fa-location-dot"></i> <span>Karachi, Pakistan</span></li>
+                    </ul>
+                </div>
             </div>
 
-            <button class="place-order-btn" onclick="placeOrder()">Place Order <i
-                    class="fas fa-check-circle"></i></button>
+            <div class="footer-bottom">
+                Copyright © 2026 M&M Enterprises. All Rights Reserved.
+            </div>
         </div>
+    </footer>
 
-    </div>
-
-    <div class="mobile-bottom-nav">
-        <a href="index.html" class="mobile-nav-item active">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-
-        <a href="shop.html" class="mobile-nav-item">
-            <i class="fas fa-store"></i>
-            <span>Shop</span>
-        </a>
-
-        <a href="cart.html" class="mobile-nav-item">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Cart</span>
-        </a>
-
-        <a href="user-profile.html" class="mobile-nav-item" id="bottomNavAccount">
-            <i class="fas fa-user"></i>
-            <span>Account</span>
-        </a>
-
-        <a href="javascript:void(0);" class="mobile-nav-item" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-            <span>Menu</span>
-        </a>
-    </div>
-
+    <!-- Alert Modal -->
     <div id="customModal" class="custom-modal-overlay">
         <div class="custom-modal-box">
-            <div id="modalIcon" class="modal-icon success-icon"><i class="fas fa-check"></i></div>
-            <h3 id="modalTitle">Title</h3>
-            <p id="modalMessage">Message goes here.</p>
-            <button class="modal-btn" onclick="closeModal()">OK</button>
+            <div class="modal-icon" id="modalIcon"><i class="fas fa-info"></i></div>
+            <h3 id="modalTitle">Notice</h3>
+            <p id="modalMessage">Message content goes here.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn btn-confirm" onclick="closeModal()">OK</button>
+            </div>
         </div>
     </div>
 
@@ -688,38 +332,49 @@
         let finalCartWithShipping = [];
 
         function toggleMenu() {
-            document.getElementById('navMenu').classList.toggle('active');
-            document.querySelector('.menu-overlay').classList.toggle('active');
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.querySelector('.menu-overlay');
+            drawer.classList.toggle('active');
+            overlay.classList.toggle('active');
         }
-
-        function checkLoginStatus() {
-            const userToken = localStorage.getItem('user_token');
-            const profileLink = document.getElementById('headerProfileLink');
-            const bottomProfile = document.getElementById('bottomNavAccount');
-            if (userToken) { profileLink.href = "user-profile.html"; bottomProfile.href = "user-profile.html"; }
-            else { profileLink.href = "myaccount.html"; bottomProfile.href = "myaccount.html"; }
-        }
-        checkLoginStatus();
 
         function showModal(type, title, message) {
             const modal = document.getElementById('customModal');
             const icon = document.getElementById('modalIcon');
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalMessage').innerText = message;
-            icon.className = 'modal-icon ' + (type === 'success' ? 'success-icon' : 'error-icon');
-            icon.innerHTML = type === 'success' ? '<i class="fas fa-check"></i>' : (type === 'warning' ? '<i class="fas fa-exclamation-triangle"></i>' : '<i class="fas fa-times"></i>');
+
+            icon.className = 'modal-icon';
+            if (type === 'success') {
+                icon.classList.add('success-icon');
+                icon.innerHTML = '<i class="fas fa-check"></i>';
+            } else if (type === 'error') {
+                icon.classList.add('error-icon');
+                icon.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                icon.classList.add('alert-icon');
+                icon.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+            }
+
             modal.style.display = 'flex';
         }
-        function closeModal() { document.getElementById('customModal').style.display = 'none'; }
-        window.onclick = function (event) { if (event.target == document.getElementById('customModal')) closeModal(); }
+
+        function closeModal() {
+            document.getElementById('customModal').style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById('customModal')) closeModal();
+        }
 
         window.onload = function () {
             const token = localStorage.getItem('user_token');
             if (!token) {
-                showModal('error', 'Login Required', 'Please log in to place an order.');
-                setTimeout(() => { window.location.href = 'myaccount.html'; }, 2000);
+                showModal('error', 'Login Required', 'Please log in to your account to place an order.');
+                setTimeout(() => { window.location.href = 'myaccount.html'; }, 1800);
                 return;
             }
+
             const user = JSON.parse(localStorage.getItem('user_details'));
             if (user) {
                 document.getElementById('cName').value = user.fullName || user.name || '';
@@ -727,6 +382,7 @@
                 document.getElementById('cCity').value = user.city || '';
                 document.getElementById('cAddress').value = user.address || '';
             }
+
             loadCheckoutItems();
         }
 
@@ -734,7 +390,10 @@
             cart = JSON.parse(localStorage.getItem('cart')) || [];
             const container = document.getElementById('checkoutItems');
 
-            if (cart.length === 0) { window.location.href = 'shop.html'; return; }
+            if (cart.length === 0) {
+                window.location.href = 'shop.html';
+                return;
+            }
 
             let itemsHtml = '';
             let subtotal = 0;
@@ -751,8 +410,7 @@
                         currentPrice = Math.round(product.price - (product.price * product.discount / 100));
                     }
 
-                    let shipping = (product.shippingFee || 0);
-
+                    let shipping = product.shippingFee || 0;
                     let itemTotal = currentPrice * item.quantity;
 
                     subtotal += itemTotal;
@@ -768,82 +426,89 @@
                     });
 
                     let imageSrc = (product.images && product.images.length > 0) ? product.images[0] : product.image;
-                    let cleanImage = imageSrc ? `/${imageSrc.replace(/\\/g, '/')}` : 'https://placehold.co/100';
+                    let cleanImage = imageSrc ? `/${imageSrc.replace(/\\/g, '/')}` : 'https://placehold.co/100x100?text=No+Image';
 
                     itemsHtml += `
                         <div class="checkout-item">
-                            <img src="${cleanImage}" alt="${item.title}">
-                            <div class="item-info">
+                            <img src="${cleanImage}" alt="${item.title}" onerror="this.src='https://placehold.co/100x100?text=No+Image'">
+                            <div class="item-details">
                                 <h4>${item.title}</h4>
-                                <p>Qty: ${item.quantity} x PKR ${currentPrice}</p>
-                                <p style="font-size:11px; color:#888;">Shipping: PKR ${shipping}</p>
+                                <p>Qty: ${item.quantity} × PKR ${currentPrice}</p>
+                                ${shipping > 0 ? `<p style="color:var(--text-muted); font-size:11.5px;">Shipping: PKR ${shipping}</p>` : ''}
                             </div>
-                            <div class="item-total">PKR ${itemTotal + shipping}</div>
-                        </div>`;
+                            <div class="item-cost">PKR ${itemTotal}</div>
+                        </div>
+                    `;
                 } catch (err) {
-                    console.error("Error loading product", err);
+                    console.error("Error loading product checkout info", err);
                 }
             }
 
             container.innerHTML = itemsHtml;
             document.getElementById('summarySubtotal').innerText = `PKR ${subtotal}`;
-
-            const shippingRow = document.querySelectorAll('.summary-row')[1];
-            if (shippingRow) {
-                shippingRow.children[1].innerText = totalShipping > 0 ? `PKR ${totalShipping}` : 'Free';
-                shippingRow.children[1].style.color = totalShipping > 0 ? '#333' : 'green';
+            const shipEl = document.getElementById('summaryShipping');
+            if (totalShipping > 0) {
+                shipEl.innerText = `PKR ${totalShipping}`;
+                shipEl.style.color = 'var(--text-primary)';
+            } else {
+                shipEl.innerText = 'FREE';
+                shipEl.style.color = 'var(--success)';
             }
-
             document.getElementById('summaryTotal').innerText = `PKR ${subtotal + totalShipping}`;
         }
 
         async function placeOrder() {
             const token = localStorage.getItem('user_token');
             const customerDetails = {
-                name: document.getElementById('cName').value,
-                contact: document.getElementById('cContact').value,
-                city: document.getElementById('cCity').value,
-                address: document.getElementById('cAddress').value
+                name: document.getElementById('cName').value.trim(),
+                contact: document.getElementById('cContact').value.trim(),
+                city: document.getElementById('cCity').value.trim(),
+                address: document.getElementById('cAddress').value.trim()
             };
 
             if (!customerDetails.name || !customerDetails.contact || !customerDetails.city || !customerDetails.address) {
-                showModal('error', 'Missing Information', 'Please fill in all shipping details.');
+                showModal('error', 'Missing Information', 'Please complete all required fields.');
                 return;
             }
 
             const totalBill = finalCartWithShipping.reduce((sum, item) => {
-
-                return sum + (item.price * item.quantity) + item.shippingFee;
+                return sum + (item.price * item.quantity) + (item.shippingFee || 0);
             }, 0);
 
             const btn = document.querySelector('.place-order-btn');
-            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Placing Order...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing Order...';
             btn.disabled = true;
 
             try {
                 const res = await fetch(`${API_URL}/order/place`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'auth-token': token },
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'auth-token': token
+                    },
                     body: JSON.stringify({
                         customer_details: customerDetails,
                         cart_items: finalCartWithShipping,
                         total_bill: totalBill
                     })
                 });
+
                 const data = await res.json();
 
                 if (data.success) {
                     localStorage.removeItem('cart');
-                    showModal('success', 'Order Placed!', 'Thank you for your purchase. Your order has been received.');
-                    setTimeout(() => { window.location.href = 'user-profile.html'; }, 2000);
+                    showModal('success', 'Order Placed Successfully!', `Your order ID is #${data.orderId || 'MM'}. Redirecting to your account profile...`);
+                    setTimeout(() => {
+                        window.location.href = 'user-profile.html';
+                    }, 2000);
                 } else {
-                    showModal('error', 'Order Failed', data.message || 'Failed to place order. Please try again.');
-                    btn.innerHTML = 'Place Order <i class="fas fa-check-circle"></i>';
+                    showModal('error', 'Order Failed', data.message || 'Unable to place order. Please check your cart.');
+                    btn.innerHTML = 'Place Order Now <i class="fas fa-shield-check"></i>';
                     btn.disabled = false;
                 }
             } catch (err) {
-                showModal('error', 'Server Error', 'Could not connect to the server.');
-                btn.innerHTML = 'Place Order <i class="fas fa-check-circle"></i>';
+                showModal('error', 'Server Connection Error', 'Could not reach the server. Please try again.');
+                btn.innerHTML = 'Place Order Now <i class="fas fa-shield-check"></i>';
                 btn.disabled = false;
             }
         }

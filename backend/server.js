@@ -260,7 +260,7 @@ app.post('/api/user/forgot-password', async (req, res) => {
         user.resetOTP = otp; user.otpExpires = Date.now() + 600000;
         await user.save();
         await transporter.sendMail({
-            from: '"MSW Support" <mswenterprisespk@gmail.com>', to: email,
+            from: '"M&M Support" <mswenterprisespk@gmail.com>', to: email,
             subject: 'Reset Password', html: `<h3>OTP: ${otp}</h3>`
         });
         res.json({ success: true });
@@ -291,7 +291,7 @@ app.post('/api/admin/forgot-password', async (req, res) => {
         admin.resetOTP = otp; admin.otpExpires = Date.now() + 600000;
         await admin.save();
         await transporter.sendMail({
-            from: '"MSW Admin" <mswenterprisespk@gmail.com>', to: admin.email,
+            from: '"M&M Admin" <mswenterprisespk@gmail.com>', to: admin.email,
             subject: 'Admin OTP', html: `<h3>OTP: ${otp}</h3>`
         });
         res.json({ success: true });
@@ -443,7 +443,7 @@ app.post('/api/contact', async (req, res) => {
     const { name, email, subject, message } = req.body;
     try {
         await transporter.sendMail({
-            from: '"MSW Contact" <mswenterprisespk@gmail.com>', to: 'mswenterprisespk@gmail.com', replyTo: email,
+            from: '"M&M Contact" <mswenterprisespk@gmail.com>', to: 'mswenterprisespk@gmail.com', replyTo: email,
             subject: `Contact: ${subject}`, html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Msg: ${message}</p>`
         });
         res.json({ success: true });
