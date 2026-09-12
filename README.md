@@ -3,8 +3,7 @@
 A complete, responsive e-commerce application designed store. Built using the **MEN Stack** (MongoDB, Express.js, Node.js) with a custom Vanilla JavaScript frontend, this project features a seamless shopping experience for users and a robust management system for administrators.
 
 ## 🚀 Live Demo
-[Link to Live Demo](https://your-render-link-here.com)  
-*(Coming Soon)*
+[Link to Live Demo](https://msw-1.onrender.com)  
 
 ---
 
